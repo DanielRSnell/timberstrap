@@ -48,14 +48,23 @@ This will create an easy way to access data, files, shortcodes, or any functiona
 
 Here's an example using the child theme directories and some simple twig markup within livecanvas.
 
-```html
-Copy code
+```twig
 <div class="live-shortcode">
-  [agnostic] {# Set a variable in Twig #} {% set example = "example" %} {#
-  Display the variable #} {{example}} {# Include a custom block from the
-  'blocks' namespace #} {{ include('@blocks/custom') }} {# Include a loop
-  template from the 'dynamic' namespace #} {{ include('@dynamic/loop') }}
-  [/agnostic]
+  [agnostic]
+
+    {# Define a Twig variable #}
+    {% set example = "example" %}
+
+    {# Display the variable #}
+    {{example}}
+
+    {# Include a custom block from the 'blocks' namespace #}
+    {{ include('@blocks/custom') }}
+
+    {# Include a loop template from the 'dynamic' namespace #}
+    {{ include('@dynamic/loop') }}
+
+    [/agnostic]
 </div>
 ```
 
