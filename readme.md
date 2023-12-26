@@ -58,7 +58,7 @@ Here's an example using the child theme directories and some simple twig markup 
     {# Display the variable #}
     {{example}}
 
-    {# Include a custom block from the 'blocks' namespace #}
+    {# Include a custom block from the 'blocks' namespace, files in these directories don't require an extension to be used with Twig. However, .html is required for it to appear in the Livecanvas Custom Blocks section. #}
     {{ include('@blocks/custom') }}
 
     {# Include a loop template from the 'dynamic' namespace #}
@@ -69,6 +69,10 @@ Here's an example using the child theme directories and some simple twig markup 
 ```
 
 In this example, the Twig `{% set %}` tag is used to define a variable, and the `{{ }}` syntax displays the content of the variable. The `{{ include('@namespace/template') }}` syntax is used to include other Twig templates, enabling modular and reusable code. The `live-shortcode` class wraps the content, allowing for live updates within the Livecanvas Editor.
+
+## Usage with File System / Custom Post Types
+
+If you want to include a twig template that appears within Custom Blocks or Sections for the Livecanvas editor. Just add your markup to a `.html` file and add `live-shortcode` to the parent, then wrap your markup with `[agnostic] HTML or TWIG HERE [/agnostic]`.
 
 ## Customization
 
