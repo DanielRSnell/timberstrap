@@ -16,4 +16,5 @@ function agnostic_shortcode($atts, $content = null) {
     // If Timber is not available, just return the content
     return $content;
 }
+
 add_shortcode('agnostic', 'agnostic_shortcode');
