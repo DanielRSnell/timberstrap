@@ -35,7 +35,7 @@ lc_html_editor.setOptions({
   enableLiveAutocompletion: true,
   showPrintMargin: false,
   highlightActiveLine: false,
-  mode: "ace/mode/html",
+  mode: "ace/mode/twig",
   wrap: true,
   useSoftTabs: false,
   tabSize: 4,

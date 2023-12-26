@@ -28,7 +28,7 @@ function generate_autocomplete_script() {
     $ready_json = json_encode($completions);
 
     // Echo out the JavaScript code. The suggestions are stored in a const variable.
-    echo '<script id="autocomplete-payload">
+    echo '<script data-integration="autocomplete">
     const suggestions = ' . $ready_json . ';
     </script>';
 }
