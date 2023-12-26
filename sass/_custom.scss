@@ -1,3 +1,16 @@
-.custom-class {
-    color: red;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    @apply bg-gray-50;
+}
+
+.accordion {
+    @apply bg-blue-50 flex flex-col gap-4 p-4 rounded-2xl;
+}
+
+
+.accordion-item {
+    @apply bg-white ring-1 p-4 ring-black/10 text-black rounded-2xl;
 }
