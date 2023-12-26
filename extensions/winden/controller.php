@@ -6,7 +6,7 @@
  * This function outputs a script tag for the 'autocomplete.js' file, with the 'defer' attribute.
  */
 function lc_add_autocomplete_extension() {
-    $script_url = get_stylesheet_directory_uri() . '/includes/extensions/autocomplete/assets/autocomplete.js';
+    $script_url = get_stylesheet_directory_uri() . '/extensions/winden/assets/autocomplete.js';
     echo '<script src="' . esc_url($script_url) . '" defer></script>';
 }
 
