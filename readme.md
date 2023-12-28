@@ -40,6 +40,94 @@ To display the latest 10 posts using Twig, embed the following code in a post or
 {% endfor %}
 ```
 
+## Special Helpers
+
+Special helpers allow you to use Twig to acheive key functionalities that are often needed when writing templates. This would include scenarios where you need to get a Query Param or get the current post.
+
+```twig
+
+<section class="live-shortcode">
+[agnostic]
+
+<h1>{{CurrentPost.title}}</h1>
+
+[/agnostic]
+</section>
+
+```
+
+```twig
+<section class="live-shortcode">
+[agnostic]
+
+{# Declare Current Post #}
+
+{% set post = CurrentPost %}
+
+<h1>{{post.title}}</h1>
+
+[/agnostic]
+</section>
+
+```
+
+The benefit in this scenario is that it's a semantically friendly way to fetch the current post, while controlly the markup for any variable. When you use `set variableName = CurrentPost` it gives you access to all the data attached to the current post.
+
+### Query Params
+
+This allows you to use query params easily within any template, you can either use specific ones or a series of Query Params.
+
+```twig
+
+<section class="live-shortcode">
+[agnostic]
+
+{% set email = get_any_var('email') %}
+
+{% if email %}
+
+{# Do Something #}
+
+{% else %}
+
+<span>Whoops, there was no email found</span>
+
+{% endif %}
+
+[/agnostic]
+</section>
+
+
+```
+
+You can also get all current Query Params like this:
+
+```twig
+
+<section class="live-shortcode">
+[agnostic]
+
+{% set params = get_params_object %}
+
+{% if params.email %}
+
+{# Do Something #}
+
+{% else %}
+
+<span>Whoops, there was no email found</span>
+
+{% endif %}
+
+[/agnostic]
+</section>
+
+```
+
+In the above example it returns a group of params, also known as an `object` which then let's you access any param on the current url.
+
+This works great for situations where you're passing data from one page to another.
+
 ## Usage with Livecanvas
 
 With livecanvas you can now use real time live updating TWIG by using the inline snippets provided below, this gives you the full access to the entire Timber Fraemwork and Twig syntax.
