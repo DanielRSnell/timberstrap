@@ -32,7 +32,7 @@ To display the latest 10 posts using Twig, embed the following code in a post or
     'posts_per_page': 10
 } %}
 
-{% set posts = function('get_posts', args) %}
+{% set posts = Post(args) %}
 
 {% for post in posts %}
     <h2 class="text-dark">{{ post.post_title }}</h2>
