@@ -27,6 +27,7 @@ function handleClassMutation(mutation, editorWindow, previewIframe, previewWindo
                 previewIframe.style.marginRight = "0";
                 previewIframe.style.width = "60%";
             } else {
+                editorWindow.style.cssText = "max-height: 100vh; display: block; height: calc(100% - var(--maintoolbar-height) - 0px) !important; width: 40% !important;";
                 // If it's a mobile preview, adjust margins based on previewWidth
                 const previewWidth = parseFloat(previewWindow.style.width);
                 handlePreviewWindowChanges(previewWidth);
@@ -37,30 +38,40 @@ function handleClassMutation(mutation, editorWindow, previewIframe, previewWindo
             editorWindow.style.cssText = "max-height: 100vh; display: block;";
             previewIframe.style.marginLeft = "";
             previewIframe.style.marginRight = "";
+            previewIframe.style.marginTop = "";
             previewIframe.style.width = "";
         }
     }
 }
 
 function handleStyleMutation(mutation, previewWindow, previewIframe) {
-    if (mutation.attributeName === "style") {
-        console.log("Preview Window Style Changed");
-        const mobilePreview = document.querySelector(".smartphone");
-        if (!mobilePreview) {
-            console.log("Mobile Preview Not Active");
-            previewIframe.style.width = "60%";
-            previewIframe.style.marginRight = "0";
-        } else {
-            console.log("Mobile Preview Active");
-            const previewWidth = parseFloat(previewWindow.style.width);
-            previewIframe.style.removeProperty("width");
-            console.log("Preview Width: ", previewWidth);
+        if (mutation.attributeName === "style") {
+            const slider = document.querySelector(".lc-editor-window-sided");
+            if (slider) {
+            console.log("Preview Window Style Changed");
 
             const mobilePreview = document.querySelector(".smartphone");
+            if (!mobilePreview) {
+                console.log("Mobile Preview Not Active");
+                previewIframe.style.width = "60%";
+                previewIframe.style.marginRight = "0";
+            } else {
+                console.log("Mobile Preview Active");
+                const previewWidth = parseFloat(previewWindow.style.width);
+                previewIframe.style.removeProperty("width");
+                console.log("Preview Width: ", previewWidth);
 
-            handlePreviewWindowChanges(previewWidth); // Adjust margins based on previewWidth
-            // Adjust margins based on previewWidth
-            // ... (Insert margin adjustment logic here) ...
+                const mobilePreview = document.querySelector(".smartphone");
+
+                handlePreviewWindowChanges(previewWidth); // Adjust margins based on previewWidth
+
+            }
+        } else {
+            console.log("Slider Closed State");
+            slider.style.cssText = "max-height: 100vh; display: block;";
+            previewIframe.style.marginLeft = "";
+            previewIframe.style.marginRight = "";
+            previewIframe.style.width = "";
         }
     }
 }
