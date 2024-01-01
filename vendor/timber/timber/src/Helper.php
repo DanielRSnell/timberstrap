@@ -14,7 +14,7 @@ use WP_User;
 /**
  * Class Helper
  *
- * As the name suggests these are helpers for Timber (and you!) when developing. You can find additional
+ * As the name suggests these are helpers Timber/Twig (and you!) when developing. You can find additional
  * (mainly internally-focused helpers) in Timber\URLHelper.
  * @api
  */

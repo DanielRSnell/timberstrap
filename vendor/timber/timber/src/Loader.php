@@ -383,7 +383,7 @@ class Loader
         }
 
         /**
-         * Alias Timber::$cache can be used for Timber::$twig_cache.
+         * Alias Timber::$cache can be used Timber/Twig::$twig_cache.
          *
          * @deprecated 2.0.0
          */

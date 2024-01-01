@@ -1,26 +1,19 @@
 <?php 
 
-add_filter('timber/context', function ($context) {
-
-    $context['params'] = get_params_object();
-
-    return $context;
-});
-
-
-
 function get_params_object() {
-    // Get all query parameters
-    $queryParams = $_GET;
+    // Merge GET and POST parameters
+    $requestParams = array_merge($_GET, $_POST);
 
     $attributes = [];
-    foreach ($queryParams as $key => $value) {
-        // If the parameter is not 'email', prefix it with 'metadata__'
-        if ($key !== 'email') {
-            $key = $key;
-        }
+    foreach ($requestParams as $key => $value) {
+        // If the parameter is not 'email', keep it as is
         $attributes[$key] = sanitize_text_field($value);
     }
 
     return $attributes;
 }
+
+add_filter('timber/context', function ($context) {
+    $context['params'] = get_params_object();
+    return $context;
+});

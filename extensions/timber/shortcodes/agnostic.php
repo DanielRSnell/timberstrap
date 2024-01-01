@@ -1,20 +1,19 @@
 <?php
 
 function agnostic_shortcode($atts, $content = null) {
-    // Ensure Timber is loaded
-    if (class_exists('Timber')) {
 
-        // Context: Use global post by default
+        global $post;
+        global $wp_query;
+        // Prepare Timber context
         $context = Timber::context();
+        $context['state'] = $context;
+        $context['attributes'] = $atts;
 
         // Compile the content as a Twig template
         $compiled_content = Timber::compile_string($content, $context);
 
         return $compiled_content;
-    }
-
-    // If Timber is not available, just return the content
-    return $content;
+    
 }
 
 add_shortcode('agnostic', 'agnostic_shortcode');

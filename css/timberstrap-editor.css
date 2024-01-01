@@ -1,0 +1,64 @@
+:where(body) {
+  --editor-50: #f8fafc;
+  --editor-100: #f1f5f9;
+  --editor-200: #e2e8f0;
+  --editor-300: #cbd5e1;
+  --editor-400: #94a3b8;
+  --editor-500: #64748b;
+  --editor-600: #475569;
+  --editor-700: #334155;
+  --editor-800: #1e293b;
+  --editor-900: #0f172a;
+  --editor-950: #0a101c;
+  --editor-success: #4ade80;
+  --editor-warning: #ecc94b;
+  --editor-error: #f56565;
+  --editor-info: #63b3ed;
+}
+
+body {
+  --maintoolbar-height: 42px;
+  --sidepanel-width: 274px;
+  --color1: var(--editor-400);
+  --color2: var(--editor-200);
+  --color-background: var(--editor-700);
+  --color-green: var(--editor-success);
+  --color-yellow: var(--editor-warning);
+  --color-accents: var(--editor-600);
+  --color-interface-bg: var(--editor-950);
+  --color1-lighter-30: #177a87;
+  --color-grey: var(--editor-400);
+  --color-lightgrey: var(--editor-300);
+  --color-grey-2: #a9abcb;
+  --color-interface-bg-dark: var(--editor-900);
+  --color-prop-icons: var(--editor-300);
+  --scrollable-areas-voffset: 165px;
+}
+
+#primary-tools {
+  z-index: 9999;
+}
+
+#primary-tools {
+  background: var(--color-interface-bg) !important;
+  border-radius: 0.5rem !important;
+  padding: 10px !important;
+  // Animation
+  animation: slide-in 0.5s ease-in-out;
+}
+
+#primary-tools:hover {
+  background: var(--editor-700) !important;
+}
+
+#primary-tools a {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-weight: semibold;
+}
+
+#primary-tools br {
+  display: none !important; /* Prevents the line break caused by <br> */
+}

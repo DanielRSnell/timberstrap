@@ -10,7 +10,7 @@ $base_dir = get_stylesheet_directory() . '/extensions/timber/';
 require $base_dir . 'locations.php';
 
 // List of directories to include files from.
-$directories = ['functions', 'maps', 'shortcodes'];
+$directories = ['functions', 'maps', 'shortcodes', 'context', 'filters'];
 
 foreach ($directories as $dir) {
     $full_dir_path = $base_dir . $dir;

@@ -308,7 +308,7 @@ class Timber
      * @see https://timber.github.io/docs/v2/guides/class-maps/
      *
      * @param mixed $query   Optional. Query or post identifier. Default false.
-     * @param array $options Optional. Options for Timber\Timber::get_post().
+     * @param array $options Optional. Options Timber/Twig\Timber::get_post().
      *
      * @return Attachment|null Timber\Attachment object if an attachment was found, null if no
      *                         attachment was found.
@@ -334,7 +334,7 @@ class Timber
      * @see https://timber.github.io/docs/v2/guides/class-maps/
      *
      * @param mixed $query   Optional. Query or post identifier. Default false.
-     * @param array $options Optional. Options for Timber\Timber::get_post().
+     * @param array $options Optional. Options Timber/Twig\Timber::get_post().
      *
      * @return Image|null
      */
@@ -449,7 +449,7 @@ class Timber
         if (\is_array($query) && isset($query['numberposts'])) {
             Helper::doing_it_wrong(
                 'Timber::get_posts()',
-                'Using `numberposts` only works when using `get_posts()`, but not for Timber::get_posts(). Use `posts_per_page` instead.',
+                'Using `numberposts` only works when using `get_posts()`, but not Timber/Twig::get_posts(). Use `posts_per_page` instead.',
                 '2.0.0'
             );
         }
