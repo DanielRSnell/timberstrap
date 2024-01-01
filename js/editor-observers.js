@@ -18,8 +18,9 @@ function handleClassMutation(mutation, editorWindow, previewIframe, previewWindo
     if (mutation.attributeName === "class" && editorWindow) {
         if (editorWindow.classList.contains("lc-editor-window-sided")) {
             const mobilePreview = document.querySelector(".smartphone");
+            const slider = document.querySelector(".lc-editor-window-sided");
 
-            if (!mobilePreview) {
+        if (slider) {
                 console.log('Editor Window Class Changed')
                 console.log("Slider Active State");
                 editorWindow.style.cssText = "max-height: 100vh; display: block; height: calc(100% - var(--maintoolbar-height) - 0px) !important; width: 40% !important;";
@@ -33,15 +34,42 @@ function handleClassMutation(mutation, editorWindow, previewIframe, previewWindo
                 handlePreviewWindowChanges(previewWidth);
             }
         } else {
-            console.log('Editor Window Class Changed')
-            console.log("Slider Closed State");
-            editorWindow.style.cssText = "max-height: 100vh; display: block;";
+            console.log('Slider Closed State');
+            // console.log('Editor Window Class Changed')
+            // console.log("Slider Closed State");
+            // previewIframe.style.marginLeft = "";
+            // previewIframe.style.marginRight = "";
+            // previewIframe.style.marginTop = "";
+            // previewIframe.style.width = "";
+            handleLeftPannelMutation(mutation, previewIframe);
+        }
+    }
+}
+
+function handleLeftPannelMutation(mutation, previewIframe) {
+    // Check for display none on #sidepanel 
+    const sidepanel = document.getElementById("sidepanel");
+    const editor = document.getElementById("lc-html-editor-window");
+    const sidepanelStyle = getComputedStyle(sidepanel);
+        if (sidepanelStyle.display !== "none") {
+            console.log("Sidepanel Display None");
             previewIframe.style.marginLeft = "";
             previewIframe.style.marginRight = "";
             previewIframe.style.marginTop = "";
             previewIframe.style.width = "";
-        }
+
+            editor.style.maxHeight = "100vh";
+            editor.style.display = "none";
+
+        }  else {
+        console.log("Sidepanel Does Not Exist");
+        editor.style.maxHeight = "100vh";
+        editor.style.display = "block";
+        editor.style.removeProperty("height");
+        editor.style.removeProperty("width");
+        previewIframe.style.cssText = ''; 
     }
+
 }
 
 function handleStyleMutation(mutation, previewWindow, previewIframe) {
@@ -49,6 +77,8 @@ function handleStyleMutation(mutation, previewWindow, previewIframe) {
             const slider = document.querySelector(".lc-editor-window-sided");
             if (slider) {
             console.log("Preview Window Style Changed");
+
+            // handleLeftPannelMutation(mutation, previewIframe);
 
             const mobilePreview = document.querySelector(".smartphone");
             if (!mobilePreview) {
