@@ -1,6 +1,6 @@
 <?php
 
-function agnostic_shortcode($atts, $content = null) {
+function twig_shortcode($atts, $content = null) {
 
         global $post;
         global $wp_query;
@@ -16,4 +16,4 @@ function agnostic_shortcode($atts, $content = null) {
     
 }
 
-add_shortcode('agnostic', 'agnostic_shortcode');
+add_shortcode('twig', 'twig_shortcode');

@@ -1,4 +1,4 @@
-const timberstrap = true;
+const twig = true;
     
     function filterPreviewHTML(input) {
     console.log("Something changed");
@@ -13,8 +13,8 @@ const timberstrap = true;
         input = input.replace(/\[lc_([^\]]+)\]/g, "<lc-dynamic-element hidden>[$&");
         input = input.replace(/\[\/lc_([^\]]+)\]/g, "$&</lc-dynamic-element>");
 
-        // Wrap [agnostic] shortcode block
-        input = input.replace(/\[agnostic\]([\s\S]*?)\[\/agnostic\]/g, "<lc-dynamic-element hidden>[agnostic]$1[/agnostic]</lc-dynamic-element>");
+        // Wrap [twig] shortcode block
+        input = input.replace(/\[twig\]([\s\S]*?)\[\/twig\]/g, "<lc-dynamic-element hidden>[twig]$1[/twig]</lc-dynamic-element>");
 
         console.log(input, "Dynamic template prepared for preview");
     } else {

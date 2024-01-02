@@ -1,11 +1,11 @@
 # Picostrap Child Theme with Timber 2.X
 
-This child theme for Picostrap leverages the Timber 2.X library, enabling advanced templating in WordPress using the Twig engine. It introduces the 'Agnostic' shortcode for inline Twig templating, providing a seamless integration of Twig directly within WordPress posts and pages.
+This child theme for Picostrap leverages the Timber 2.X library, enabling advanced templating in WordPress using the Twig engine. It introduces the 'twig' shortcode for inline Twig templating, providing a seamless integration of Twig directly within WordPress posts and pages.
 
 ## Features
 
 - **Timber 2.X Integration**: Utilizes the Timber library for a modern MVC-like development approach in WordPress.
-- **Inline Twig Templating**: Employs the `[agnostic]...[/agnostic]` shortcode for inline Twig templating within WordPress editor.
+- **Inline Twig Templating**: Employs the `[twig]...[/twig]` shortcode for inline Twig templating within WordPress editor.
 - **Picostrap Parent Theme**: Inherits functionalities and styles from the Picostrap WordPress theme.
 
 ## Installation
@@ -16,9 +16,9 @@ This child theme for Picostrap leverages the Timber 2.X library, enabling advanc
 
 ## Usage
 
-### Inline Twig Templating with Agnostic Shortcode
+### Inline Twig Templating with twig Shortcode
 
-The `[agnostic]...[/agnostic]` shortcode enables you to embed Twig code directly in WordPress posts or pages. This feature allows dynamic content rendering and advanced templating capabilities.
+The `[twig]...[/twig]` shortcode enables you to embed Twig code directly in WordPress posts or pages. This feature allows dynamic content rendering and advanced templating capabilities.
 
 #### Basic Example:
 
@@ -47,18 +47,18 @@ Special helpers allow you to use Twig to acheive key functionalities that are of
 ```twig
 
 <section class="live-shortcode">
-[agnostic]
+[twig]
 
 <h1>{{CurrentPost.title}}</h1>
 
-[/agnostic]
+[/twig]
 </section>
 
 ```
 
 ```twig
 <section class="live-shortcode">
-[agnostic]
+[twig]
 
 {# Declare Current Post #}
 
@@ -66,7 +66,7 @@ Special helpers allow you to use Twig to acheive key functionalities that are of
 
 <h1>{{post.title}}</h1>
 
-[/agnostic]
+[/twig]
 </section>
 
 ```
@@ -80,7 +80,7 @@ This allows you to use query params easily within any template, you can either u
 ```twig
 
 <section class="live-shortcode">
-[agnostic]
+[twig]
 
 {% set email = get_any_var('email') %}
 
@@ -94,7 +94,7 @@ This allows you to use query params easily within any template, you can either u
 
 {% endif %}
 
-[/agnostic]
+[/twig]
 </section>
 
 
@@ -105,7 +105,7 @@ You can also get all current Query Params like this:
 ```twig
 
 <section class="live-shortcode">
-[agnostic]
+[twig]
 
 {% set params = get_params_object %}
 
@@ -119,7 +119,7 @@ You can also get all current Query Params like this:
 
 {% endif %}
 
-[/agnostic]
+[/twig]
 </section>
 
 ```
@@ -138,7 +138,7 @@ Here's an example using the child theme directories and some simple twig markup 
 
 ```twig
 <div class="live-shortcode">
-  [agnostic]
+  [twig]
 
     {# Define a Twig variable #}
     {% set example = "example" %}
@@ -152,7 +152,7 @@ Here's an example using the child theme directories and some simple twig markup 
     {# Include a loop template from the 'dynamic' namespace #}
     {{ include('@dynamic/loop') }}
 
-    [/agnostic]
+    [/twig]
 </div>
 ```
 

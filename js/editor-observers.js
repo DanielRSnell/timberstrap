@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    console.log("DOM Loaded Timberstrap Editor Observers");
+    console.log("DOM Loaded twig Editor Observers");
     const observer = new MutationObserver((mutations) => {
         mutations.forEach((mutation) => {
             const editorWindow = document.getElementById("lc-html-editor-window");
