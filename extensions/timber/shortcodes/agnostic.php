@@ -2,8 +2,8 @@
 
 function twig_shortcode($atts, $content = null) {
 
-        global $post;
-        global $wp_query;
+        // global $post;
+        // global $wp_query;
         // Prepare Timber context
         $context = Timber::context();
         $context['state'] = $context;
