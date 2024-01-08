@@ -124,7 +124,7 @@ class User extends CoreEntity
      * This post is by Jared Novack
      * ```
      *
-     * @return string a fallback Timber/Twig\User::name()
+     * @return string a fallback for Timber\User::name()
      */
     public function __toString()
     {

@@ -1,0 +1,26 @@
+{% if unocss %}
+
+    {{ include('@unocss/config.twig') }}
+
+    {% if preflight.tailwind %}
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@unocss/reset/tailwind.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime/preset-wind.global.js"></script>
+    {% endif %}
+
+    {% if preflight.typography %}
+         <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime/preset-typography.global.js"></script>
+    {% endif %}
+
+    {% if preflight.icons %}
+        <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime/preset-icons.global.js"></script>
+    {% endif %}
+
+     {% if preflight.webfonts %}
+        <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime/preset-web-fonts.global.js"></script>
+    {% endif %}
+    
+    <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime/uno.global.js"></script>
+ 
+ 
+
+{% endif %}

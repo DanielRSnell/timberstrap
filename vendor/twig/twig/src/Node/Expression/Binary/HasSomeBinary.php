@@ -18,7 +18,7 @@ class HasSomeBinary extends AbstractBinary
     public function compile(Compiler $compiler): void
     {
         $compiler
-            ->raw('CoreExtension::arraySome($this->env, ')
+            ->raw('twig_array_some($this->env, ')
             ->subcompile($this->getNode('left'))
             ->raw(', ')
             ->subcompile($this->getNode('right'))

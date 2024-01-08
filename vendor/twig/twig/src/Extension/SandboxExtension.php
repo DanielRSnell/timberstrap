@@ -15,7 +15,6 @@ use Twig\NodeVisitor\SandboxNodeVisitor;
 use Twig\Sandbox\SecurityNotAllowedMethodError;
 use Twig\Sandbox\SecurityNotAllowedPropertyError;
 use Twig\Sandbox\SecurityPolicyInterface;
-use Twig\Sandbox\SourcePolicyInterface;
 use Twig\Source;
 use Twig\TokenParser\SandboxTokenParser;
 
@@ -24,13 +23,11 @@ final class SandboxExtension extends AbstractExtension
     private $sandboxedGlobally;
     private $sandboxed;
     private $policy;
-    private $sourcePolicy;
 
-    public function __construct(SecurityPolicyInterface $policy, $sandboxed = false, SourcePolicyInterface $sourcePolicy = null)
+    public function __construct(SecurityPolicyInterface $policy, $sandboxed = false)
     {
         $this->policy = $policy;
         $this->sandboxedGlobally = $sandboxed;
-        $this->sourcePolicy = $sourcePolicy;
     }
 
     public function getTokenParsers(): array
@@ -53,23 +50,14 @@ final class SandboxExtension extends AbstractExtension
         $this->sandboxed = false;
     }
 
-    public function isSandboxed(Source $source = null): bool
+    public function isSandboxed(): bool
     {
-        return $this->sandboxedGlobally || $this->sandboxed || $this->isSourceSandboxed($source);
+        return $this->sandboxedGlobally || $this->sandboxed;
     }
 
     public function isSandboxedGlobally(): bool
     {
         return $this->sandboxedGlobally;
-    }
-
-    private function isSourceSandboxed(?Source $source): bool
-    {
-        if (null === $source || null === $this->sourcePolicy) {
-            return false;
-        }
-
-        return $this->sourcePolicy->enableSandbox($source);
     }
 
     public function setSecurityPolicy(SecurityPolicyInterface $policy)
@@ -82,16 +70,16 @@ final class SandboxExtension extends AbstractExtension
         return $this->policy;
     }
 
-    public function checkSecurity($tags, $filters, $functions, Source $source = null): void
+    public function checkSecurity($tags, $filters, $functions): void
     {
-        if ($this->isSandboxed($source)) {
+        if ($this->isSandboxed()) {
             $this->policy->checkSecurity($tags, $filters, $functions);
         }
     }
 
     public function checkMethodAllowed($obj, $method, int $lineno = -1, Source $source = null): void
     {
-        if ($this->isSandboxed($source)) {
+        if ($this->isSandboxed()) {
             try {
                 $this->policy->checkMethodAllowed($obj, $method);
             } catch (SecurityNotAllowedMethodError $e) {
@@ -105,7 +93,7 @@ final class SandboxExtension extends AbstractExtension
 
     public function checkPropertyAllowed($obj, $property, int $lineno = -1, Source $source = null): void
     {
-        if ($this->isSandboxed($source)) {
+        if ($this->isSandboxed()) {
             try {
                 $this->policy->checkPropertyAllowed($obj, $property);
             } catch (SecurityNotAllowedPropertyError $e) {
@@ -119,7 +107,7 @@ final class SandboxExtension extends AbstractExtension
 
     public function ensureToStringAllowed($obj, int $lineno = -1, Source $source = null)
     {
-        if ($this->isSandboxed($source) && \is_object($obj) && method_exists($obj, '__toString')) {
+        if ($this->isSandboxed() && \is_object($obj) && method_exists($obj, '__toString')) {
             try {
                 $this->policy->checkMethodAllowed($obj, '__toString');
             } catch (SecurityNotAllowedMethodError $e) {

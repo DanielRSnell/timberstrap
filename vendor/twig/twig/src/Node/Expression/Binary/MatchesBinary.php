@@ -18,7 +18,7 @@ class MatchesBinary extends AbstractBinary
     public function compile(Compiler $compiler): void
     {
         $compiler
-            ->raw('CoreExtension::matches(')
+            ->raw('twig_matches(')
             ->subcompile($this->getNode('right'))
             ->raw(', ')
             ->subcompile($this->getNode('left'))

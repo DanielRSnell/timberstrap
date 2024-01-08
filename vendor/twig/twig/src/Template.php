@@ -235,21 +235,12 @@ abstract class Template
      */
     public function renderBlock($name, array $context, array $blocks = [], $useBlocks = true)
     {
-        $level = ob_get_level();
         if ($this->env->isDebug()) {
             ob_start();
         } else {
             ob_start(function () { return ''; });
         }
-        try {
-            $this->displayBlock($name, $context, $blocks, $useBlocks);
-        } catch (\Throwable $e) {
-            while (ob_get_level() > $level) {
-                ob_end_clean();
-            }
-
-            throw $e;
-        }
+        $this->displayBlock($name, $context, $blocks, $useBlocks);
 
         return ob_get_clean();
     }

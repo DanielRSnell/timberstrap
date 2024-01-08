@@ -1,0 +1,23 @@
+{% set args = {
+    'post_type': ['lc_snippet', 'lc_partial', 'lc_block', 'lc_section', 'lc_dynamic_template'],
+    'post_status': ['publish'],
+    'posts_per_page': -1,
+} %}
+
+{% set snippets = Post(args) %}
+{% set integrations_test = [] %}
+
+{% for post in snippets %}
+    {% set snippet_object = {
+        'name': post.post_type ~ '/' ~ post.slug,
+        'content': function('html_entity_decode', post.post_content)|raw
+    } %}
+    {% set integrations_test = integrations_test|merge([snippet_object]) %}
+{% endfor %}
+
+<script>
+var SnippetManager = ace.require("ace/snippets").snippetManager;
+var integrations_test = {{ integrations_test|json_encode|raw }};
+
+SnippetManager.register(integrations_test, "html");
+</script>

@@ -7,18 +7,21 @@ document.addEventListener("DOMContentLoaded", function() {
             const previewWindow = document.getElementById("previewiframe");
 
             handleClassMutation(mutation, editorWindow, previewIframe, previewWindow);
-            handleStyleMutation(mutation, previewWindow, previewIframe);
+            handleStyleMutation(mutation, previewWindow, previewIframe, editorWindow);
         });
     });
 
     setupObservers(observer);
 });
 
+
+
 function handleClassMutation(mutation, editorWindow, previewIframe, previewWindow) {
     if (mutation.attributeName === "class" && editorWindow) {
         if (editorWindow.classList.contains("lc-editor-window-sided")) {
             const mobilePreview = document.querySelector(".smartphone");
             const slider = document.querySelector(".lc-editor-window-sided");
+        
 
         if (slider) {
                 console.log('Editor Window Class Changed')
@@ -51,6 +54,7 @@ function handleLeftPannelMutation(mutation, previewIframe) {
     const sidepanel = document.getElementById("sidepanel");
     const editor = document.getElementById("lc-html-editor-window");
     const sidepanelStyle = getComputedStyle(sidepanel);
+
         if (sidepanelStyle.display !== "none") {
             console.log("Sidepanel Display None");
             previewIframe.style.marginLeft = "";
@@ -59,12 +63,10 @@ function handleLeftPannelMutation(mutation, previewIframe) {
             previewIframe.style.width = "";
 
             editor.style.maxHeight = "100vh";
-            editor.style.display = "none";
 
         }  else {
         console.log("Sidepanel Does Not Exist");
         editor.style.maxHeight = "100vh";
-        editor.style.display = "block";
         editor.style.removeProperty("height");
         editor.style.removeProperty("width");
         previewIframe.style.cssText = ''; 
@@ -72,9 +74,23 @@ function handleLeftPannelMutation(mutation, previewIframe) {
 
 }
 
-function handleStyleMutation(mutation, previewWindow, previewIframe) {
+function handleStyleMutation(mutation, previewWindow, previewIframe, editorWindow) {
         if (mutation.attributeName === "style") {
             const slider = document.querySelector(".lc-editor-window-sided");
+
+            console.log('Style Change: ', mutation)
+             const checkDisplayAttribute = editorWindow.style.display;
+            console.log('Style Change: ', checkDisplayAttribute)
+            if (checkDisplayAttribute === "none") {
+
+                    editorWindow.style.maxHeight = "100vh";
+                    editorWindow.style.removeProperty("height");
+                    editorWindow.style.removeProperty("width");
+                    // Remove Classes from editorWindow Window
+                    editorWindow.classList.remove("lc-editor-window-sided");
+
+            }
+
             if (slider) {
             console.log("Preview Window Style Changed");
 
@@ -98,7 +114,7 @@ function handleStyleMutation(mutation, previewWindow, previewIframe) {
             }
         } else {
             console.log("Slider Closed State");
-            slider.style.cssText = "max-height: 100vh; display: block;";
+            slider.style.cssText = "max-height: 100vh;";
             previewIframe.style.marginLeft = "";
             previewIframe.style.marginRight = "";
             previewIframe.style.width = "";
@@ -142,7 +158,8 @@ function handlePreviewWindowChanges(previewWidth) {
 
 
 function setupObservers(observer) {
-    observeElement(observer, "lc-html-editor-window", ["class"]);
+    
+    observeElement(observer, "lc-html-editor-window", ["class", "style"]);
     observeElement(observer, "previewiframe-wrap", ["class"], true);
     observeElement(observer, "previewiframe", ["style"]);
 }
@@ -153,3 +170,4 @@ function observeElement(observer, elementId, attributeFilter, subtree = false) {
         observer.observe(element, { attributes: true, attributeFilter, subtree });
     }
 }
+

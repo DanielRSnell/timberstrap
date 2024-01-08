@@ -1,0 +1,25 @@
+<!-- Include PrismJS Stylesheet -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.26.0/themes/prism.min.css" rel="stylesheet" />
+
+{% if maxheight is empty %}
+    {% set maxheight = 700 %}
+{% endif %}
+
+<!-- Your Code Snippet -->
+<style>
+    pre {
+        max-height: {{ maxheight }}px;
+        overflow-y: auto; /* Enables vertical scrolling if necessary */
+        background-color: #f5f5f5; /* Optional: background color for better visibility */
+        padding: 10px; /* Optional: some padding for aesthetics */
+        border: 1px solid #ccc; /* Optional: adds a border around the preformatted text */
+        border-radius: 4px; /* Optional: rounds the corners of the border */
+    }
+</style>
+
+{# {% set state = CompletePost(CurrentPost) %} #}
+
+<pre><code class="language-json">{{ function('json_encode', state, constant('JSON_PRETTY_PRINT')) | escape('html') }}</code></pre>
+
+<!-- Include PrismJS Script -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.26.0/prism.min.js"></script>

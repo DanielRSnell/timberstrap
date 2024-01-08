@@ -62,3 +62,15 @@ body {
 #primary-tools br {
   display: none !important; /* Prevents the line break caused by <br> */
 }
+
+.ace-tooltip {
+  position: fixed; /* Use fixed positioning to keep it at the top right */
+  top: 0; /* Align to the top */
+  right: 0; /* Align to the right */
+  width: 500px; /* Set the width */
+  max-height: 350px; /* Set the maximum height */
+  overflow-y: scroll; /* Enable vertical scrolling if content exceeds max-height */
+  pointer-events: auto; /* Keep pointer events enabled */
+  margin: 0; /* Reset any margin */
+  display: block; /* Keep display as block */
+}
