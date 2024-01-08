@@ -21,10 +21,6 @@ function complete_post_object($post, $raw_meta = false) {
         if (function_exists('get_fields')) {
             // ACF is active
             $post_array['fields'] = get_fields($post->ID);
-        } elseif (is_callable('rwmb_meta')) {
-            // Metabox is active
-            // Assuming you have a function or a way to retrieve all Metabox fields
-            $post_array['fields'] = rwmb_get_all_fields_values($post->ID);
         } else {
             $post_array['fields'] = $post->meta();
         }
