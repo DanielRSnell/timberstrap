@@ -33,6 +33,8 @@ function register_timberstrap_settings() {
     // Register a new setting for "Timberstrap" page
     register_setting('timberstrap_options_group', 'unocss');
     register_setting('timberstrap_options_group', 'markup_parsing');
+    // Register a new setting for Alpine Integration
+    register_setting('timberstrap_options_group', 'alpine_integration');
 
     // Register a new section in the "Timberstrap" page
     add_settings_section(
@@ -58,6 +60,15 @@ function register_timberstrap_settings() {
         'timberstrap-options',
         'timberstrap_settings_section'
     );
+
+    // Register new field for Alpine Integration
+    add_settings_field(
+        'alpine_integration_field',
+        'Alpine Integration',
+        'alpine_integration_field_callback',
+        'timberstrap-options',
+        'timberstrap_settings_section'
+    );
 }
 add_action('admin_init', 'register_timberstrap_settings');
 
@@ -73,4 +84,9 @@ function unocss_field_callback() {
 function markup_parsing_field_callback() {
     $markup_parsing = get_option('markup_parsing');
     echo '<input type="checkbox" id="markup_parsing" name="markup_parsing" value="1"' . checked(1, $markup_parsing, false) . '/>';
+}
+
+function alpine_integration_field_callback() {
+    $alpine_integration = get_option('alpine_integration');
+    echo '<input type="checkbox" id="alpine_integration" name="alpine_integration" value="1"' . checked(1, $alpine_integration, false) . '/>';
 }
