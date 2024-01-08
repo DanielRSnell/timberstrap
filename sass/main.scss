@@ -4,14 +4,15 @@
 //////////////////////////////////////////////////
  
 //IMPORT BOOTSTRAP 
-// @import "bootstrap-loader"; 
+@import "bootstrap-loader"; 
 
 
 // // THE THEME STUFF 
-// @import "wp_basic_styles";      
-// @import "picostrap";  
-// @import "woocommerce";
+@import "wp_basic_styles";      
+@import "picostrap";  
+@import "woocommerce";
 
+@import "components/core";
 
 // CUSTOM CSS : THE CHILD THEME STUFF, IF ITS THERE
 @import "custom";
