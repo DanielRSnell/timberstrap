@@ -44,14 +44,6 @@ function register_timberstrap_settings() {
         'timberstrap-options'
     );
 
-    // Register new fields in the "timberstrap_settings_section" section
-    add_settings_field(
-        'unocss_field',
-        'UnoCSS',
-        'unocss_field_callback',
-        'timberstrap-options',
-        'timberstrap_settings_section'
-    );
 
     add_settings_field(
         'markup_parsing_field',
@@ -76,10 +68,6 @@ function timberstrap_settings_section_callback() {
     echo '<p>General settings for Timberstrap.</p>';
 }
 
-function unocss_field_callback() {
-    $unocss = get_option('unocss');
-    echo '<input type="checkbox" id="unocss" name="unocss" value="1"' . checked(1, $unocss, false) . '/>';
-}
 
 function markup_parsing_field_callback() {
     $markup_parsing = get_option('markup_parsing');

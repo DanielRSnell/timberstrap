@@ -26,6 +26,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 // Load Extensions Controller (Timber, etc.)
 require get_stylesheet_directory() . '/extensions/controllers.php';
 
+
 // DE-ENQUEUE PARENT THEME BOOTSTRAP JS BUNDLE
 add_action( 'wp_print_scripts', function(){
     wp_dequeue_script( 'bootstrap5' );

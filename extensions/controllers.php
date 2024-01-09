@@ -15,11 +15,6 @@ $markup_parsing_enabled = get_option('markup_parsing');
 $alpine_integration_enabled = get_option('alpine_integration');
 
 
-// Conditionally require the files
-if ($unocss_enabled) {
-    require $BASE_DIR . '/unocss/controller.php';
-}
-
 if ($markup_parsing_enabled) {
     require $BASE_DIR . '/parse/controller.php';
 }
