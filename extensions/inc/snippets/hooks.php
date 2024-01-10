@@ -11,4 +11,4 @@ function render_snippet_head_template() {
     Timber::render('@admin/snippet-head.twig', $context);
 }
 
-add_action('lc_editor_before_body_closing', 'render_snippet_head_template');
+add_action('lc_editor_before_body_closing', 'render_snippet_head_template', 200);

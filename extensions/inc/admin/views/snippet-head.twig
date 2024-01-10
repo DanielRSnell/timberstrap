@@ -1,5 +1,5 @@
 {% set args = {
-    'post_type': ['lc_snippet', 'lc_partial', 'lc_block', 'lc_section', 'lc_dynamic_template'],
+    'post_type': ['lc_snippets', 'lc_partial', 'lc_block', 'lc_section', 'lc_dynamic_template'],
     'post_status': ['publish'],
     'posts_per_page': -1,
 } %}
@@ -7,17 +7,73 @@
 {% set snippets = Post(args) %}
 {% set integrations_test = [] %}
 
+{% set typeMapping = {
+    'lc_snippets': 'snippet',
+    'lc_partial': 'partial',
+    'lc_block': 'block',
+    'lc_section': 'section',
+    'lc_dynamic_template': 'dynamic_template'
+} %}
+
 {% for post in snippets %}
+
+{% set type = typeMapping[post.post_type] ?? 'snippet' %}
+
     {% set snippet_object = {
-        'name': post.post_type ~ '/' ~ post.slug,
-        'content': function('html_entity_decode', post.post_content)|raw
+        'name': type ~ '/' ~ post.slug,
+        'content': function('html_entity_decode', post.post_content) | raw,
     } %}
     {% set integrations_test = integrations_test|merge([snippet_object]) %}
 {% endfor %}
 
+{% set shortcode_completions = [
+    {
+        'name': 'twig',
+        'content': function('html_entity_decode', '[twig] 
+            {# Your markup goes here #} 
+            {# To live preview, wrap this in a div with the class "live-preview" #} 
+            {# Example: <div class="live-preview"></div> #} 
+            {# or use twig/section or twig/div #} 
+[/twig]')|raw
+    },
+    {
+        'name': 'twig/div',
+        'content': function('html_entity_decode', '<div class="live-shortcode"> 
+            [twig]
+                {# Your div content here #} 
+            [/twig]
+</div>')|raw
+    },
+    {
+        'name': 'twig/section',
+        'content': function('html_entity_decode', '<section class="live-shortcode"> 
+            [twig]
+                {# Your section content here #} 
+            [/twig]
+ </section>')|raw
+    },
+    {
+        'name': 'debug',
+        'content': function('html_entity_decode', '
+    {# use set state with the value you want to debug #}
+    {{ include("@partials/debug.twig") }}')|raw
+    }
+] %}
+
+{% for shortcode in shortcode_completions %}
+    {% set integrations_test = integrations_test|merge([shortcode]) %}
+{% endfor %}
+
+
 <script>
+const snippet_editor = ace.edit("lc-html-editor");
+snippet_editor.setOptions({
+    enableSnippets: true,
+    mode: "ace/mode/html",
+})
 var SnippetManager = ace.require("ace/snippets").snippetManager;
 var integrations_test = {{ integrations_test|json_encode|raw }};
+console.log("Snippets Registered: ", integrations_test)
 
 SnippetManager.register(integrations_test, "html");
 </script>

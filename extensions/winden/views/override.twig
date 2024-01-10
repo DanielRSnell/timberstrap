@@ -1,0 +1,107 @@
+
+//set autocomplete
+    lc_tailwind_editor.completers.push({
+        getCompletions: (editor, session, pos, prefix, callback) => {
+            let lineTillCursor = session.getDocument().getLine(pos.row).substring(0, pos.column);
+
+            // Check if we are editing a "class" attribute value
+            if (/class=["|'][^"']*$/i.test(lineTillCursor)) {
+                console.log('Manage Classes')
+                const classes = getTailwindClassesMappedArray();
+                console.log(classes, "TAILWIND CLASSES")
+                callback(null, getTailwindClassesMappedArray());
+            }
+
+			// Check if we are editing a "style" attribute value and using the var( function
+			else if (/style=["|'][^"']*var\([^\)]*$/i.test(lineTillCursor)) {
+				callback(null, getTailwindCSSVariablesMappedArray());
+			}
+
+            // Check if we are editing for "editable" attribute value
+            else if (/editable=["|'][^"']*$/i.test(lineTillCursor)) {
+                callback(null, [
+                    { value: 'inline', score: 1000, meta: 'LiveCanvas' },
+                    { value: 'rich', score: 1000, meta: 'LiveCanvas' }
+                ]);
+            }
+            // Check for adding new attribute names in general
+            else if (/\<[a-zA-Z0-9-]+[\s]+[^>]*$/i.test(lineTillCursor)) {
+                var suggestions = [
+                    { value: 'editable="rich"', score: 1000, meta: 'LiveCanvas' },
+                    { value: 'editable="inline"', score: 1000, meta: 'LiveCanvas' }
+                    // Add other attribute suggestions here if needed
+                ];
+                callback(null, suggestions.filter(item => item.value.startsWith(prefix)));
+            }
+            else {
+                callback(null, []);
+            }
+        }
+    });
+
+// FOR CLASSES AUTOCOMPLETE: BUILD CLASSES LIST FROM PREVIEW IFRAME's STYLESHEETS
+function getTailwindClassesMappedArray() {
+    let classes = new Set();
+
+    if (!previewiframe || !previewiframe.contentWindow || !previewiframe.contentWindow.document) {
+        console.error("Invalid or missing iframe or document object");
+        return [];
+    }
+
+    //loop all stylesheets
+    for (let sheet of previewiframe.contentWindow.document.styleSheets) {
+        
+        //skip some stylesheets
+        if (['wp-block-library-css', 'lc-preview-iframe'].includes(sheet.ownerNode.id)) {
+            continue; 
+        }
+
+        let sheetHref = sheet.href || '';
+        let sheetName = sheetHref.split('/').pop() || 'Inline Styles'; // Extract filename or label inline styles
+
+        try {
+            Array.from(sheet.cssRules).forEach(rule => {
+                // Process regular style rules
+                if (rule.type === CSSRule.STYLE_RULE) {
+                    processTailwindStyleRule(rule, classes, sheetName);
+                }
+
+                // Process rules within media queries
+                if (rule.type === CSSRule.MEDIA_RULE) {
+                    Array.from(rule.cssRules).forEach(innerRule => {
+                        if (innerRule.type === CSSRule.STYLE_RULE) {
+                            processTailwindStyleRule(innerRule, classes, sheetName);
+                        }
+                    });
+                }
+            });
+        } catch (e) {
+            console.error("Error processing stylesheet:", e);
+        }
+    }
+
+    let theClassesArray = Array.from(classes);
+
+    // Sort the classes
+    theClassesArray.sort((a, b) => a.className.localeCompare(b.className));
+
+    let mappedArray = theClassesArray.map(({ className, sheetName }) => {
+        return {
+            value: className,
+            score: sheetName.startsWith('bundle.css') ? 2 : 1,
+            meta: (sheetName.startsWith('bundle.css') || sheetName.startsWith('bundle-')) ? 'picostrap' : sheetName // Check for 'bundle.css'
+        };
+    });
+
+    return mappedArray;
+}
+
+function processTailwindStyleRule(rule, classes, sheetName) {
+    let selectorText = rule.selectorText;
+    let classNames = selectorText.match(/\.[\w-]+/g);
+    if (classNames) {
+        classNames.forEach(className => {
+            classes.add({ className: className.substring(1), sheetName });
+        });
+    }
+}

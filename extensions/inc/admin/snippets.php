@@ -1,24 +1,5 @@
 <?php 
 
-// Registered Post Types
-
-function create_custom_post_types() {
-    // Register lc_snippets as a custom post type
-    register_post_type('lc_snippets', [
-        'labels' => [
-            'name' => __('Snippets'),
-            'singular_name' => __('Snippet')
-        ],
-        'public' => true,
-        'has_archive' => false,
-        'show_ui' => true,
-        'show_in_menu' => 'livecanvas', // Show under livecanvas menu
-        // Other arguments...
-    ]);
-}
-
-add_action('init', 'create_custom_post_types');
-
 function enqueue_ace_and_alpine_scripts() {
     $screen = get_current_screen();
     if ($screen->post_type === 'lc_snippets') {
