@@ -16,7 +16,7 @@ add_action('admin_notices', function() {
 function add_bundle_css_to_global_css($global_css) {
     // Get the absolute path to the child theme directory.
     $child_theme_path = get_stylesheet_directory();
-
+    $customizerCSS = wp_get_custom_css();
     // Specify the path to the 'bundle.css' file in the 'css-output' directory of the child theme.
     $css_file = $child_theme_path . '/css-output/bundle.css';
 
@@ -27,7 +27,7 @@ function add_bundle_css_to_global_css($global_css) {
 
         // Append 'bundle.css' content before the global CSS.
         // Alternatively, use "$global_css . $bundle_css" to append it after the global CSS.
-        return $bundle_css . $global_css;
+        return $customizerCSS . $bundle_css . $global_css;
     }
 
     // Return the original global CSS if 'bundle.css' does not exist.

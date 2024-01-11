@@ -1,6 +1,7 @@
 <script id="tailwind-completions" defer>
 // Assuming you have already created the Ace Editor instance
 var lc_html_editor = ace.edit("lc-html-editor");
+var langTools = ace.require("ace/ext/language_tools");
 
 // Initialize the suggestions array with Tailwind CSS classes
 var smartClasses = {{suggestions}};
@@ -10,16 +11,17 @@ var smartCompleter = {
   getCompletions: function (editor, session, pos, prefix, callback) {
         let lineTillCursor = session.getDocument().getLine(pos.row).substring(0, pos.column);
             
-            // Check if we are editing a "class" attribute value
-            if (/class=["|'][^"']*$/i.test(lineTillCursor)) {
+            // Check if we are editing a "class" attribute value or after an @apply directive
+            if (/class=["|'][^"']*$/i.test(lineTillCursor) || /@apply\s+[^;]*$/i.test(lineTillCursor)) {
                 callback(null, smartClasses);
             }
+
 
   },
 };
 
 // Add the Tailwind CSS completer to the Ace Editor instance
-lc_html_editor.completers = [smartCompleter];
+langTools.addCompleter(smartCompleter);
 
 // Snippets isn't working but everything else does.
 </script>
