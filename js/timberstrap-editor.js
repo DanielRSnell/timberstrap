@@ -23,4 +23,7 @@ const timberstrap = true;
 }
 
 
-	
+	const timberstrap_editor = ace.edit('lc-html-editor');
+
+    timberstrap_editor.setTheme("ace/theme/monokai");
+    timberstrap_editor.session.setMode("ace/mode/twig");

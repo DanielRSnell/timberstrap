@@ -1,6 +1,9 @@
 <script id="tailwind-completions" defer>
 // Assuming you have already created the Ace Editor instance
 var lc_html_editor = ace.edit("lc-html-editor");
+// Set mode to twig 
+lc_html_editor.session.setMode("ace/mode/twig");
+
 var langTools = ace.require("ace/ext/language_tools");
 
 // Initialize the suggestions array with Tailwind CSS classes

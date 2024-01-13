@@ -1,6 +1,9 @@
 <?php 
 
 function get_template_contents() {
+    // Allowed file extensions
+    $allowed_extensions = array('html', 'twig');
+
     // Core directories
     $core_directories = [
         'blocks' => 'template-livecanvas-blocks',
@@ -24,12 +27,22 @@ function get_template_contents() {
             foreach ($files as $file) {
                 if ($file !== '.' && $file !== '..' && is_file($fullPath . '/' . $file)) {
                     $filePath = $fullPath . '/' . $file;
-                    $fileContent = file_get_contents($filePath);
 
-                    $results[] = [
-                        'name' => 'file/' . $key . '/' . pathinfo($file, PATHINFO_FILENAME),
-                        'content' => $fileContent
-                    ];
+                    // Get the file extension
+                    $fileExtension = pathinfo($filePath, PATHINFO_EXTENSION);
+
+                    // Check if the file has an allowed extension or no extension
+                    if (in_array($fileExtension, $allowed_extensions) || empty($fileExtension)) {
+                        $fileContent = file_get_contents($filePath);
+
+                        // Sanitize the HTML content
+                        $sanitizedContent = wp_kses_post($fileContent);
+
+                        $results[] = [
+                            'name' => 'file/' . $key . '/' . pathinfo($file, PATHINFO_FILENAME),
+                            'content' => $sanitizedContent,
+                        ];
+                    }
                 }
             }
         }

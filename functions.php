@@ -77,3 +77,27 @@ add_action( 'admin_notices', function  () {
 add_filter( 'wp_is_application_passwords_available', '__return_false' );
 
 // ADD YOUR CUSTOM PHP CODE DOWN BELOW /////////////////////////
+
+//ENABLE EXPERIMENTAL MODE CONFIG VARIABLE
+function lc_enable_experimental_mode(){}
+
+// ADD TO EDITOR HEADER
+add_filter("lc_editor_header", function () { ?>
+<!-- <script defer type='text/javascript' src='https://unpkg.com/@popperjs/core@2'></script> -->
+
+<!-- <script defer type='text/javascript' src='https://rawcdn.githack.com/nextapps-de/winbox/0.2.5/dist/js/winbox.min.js'></script> -->
+
+<link rel="stylesheet" href="https://rawcdn.githack.com/nextapps-de/winbox/0.2.5/dist/css/winbox.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css">
+
+<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/js/wayfinder/style.css">
+
+<script type="module" defer type='text/javascript'
+    src="<?php echo get_stylesheet_directory_uri(); ?>/js/wayfinder/index.js"></script>
+
+<?php });
+
+// ADD TO EDITOR BEFORE BODY CLOSING
+add_filter("lc_editor_before_body_closing", function () {
+    include(get_stylesheet_directory() . '/js/wayfinder/editing-panel-content.html');
+});

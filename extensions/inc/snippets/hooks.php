@@ -4,6 +4,7 @@
 // Require $HOOKS;
 
 function render_snippet_head_template() {
+
     $context = Timber::context();
     $context['files'] = get_template_contents(); // This contains your files data
     $context['state'] = $context;

@@ -1,3 +1,5 @@
+ 
+ {% if is_admin %}
   <script src="{{ CDN }}"></script>
 
       <script>
@@ -7,7 +9,5 @@
       <style type="text/tailwindcss">
 
       {{ globalCSS  }}
-      
-      {{ styles }}
-
     </style>
+{% endif %}

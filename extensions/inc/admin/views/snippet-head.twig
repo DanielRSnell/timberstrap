@@ -21,6 +21,7 @@
 
     {% set snippet_object = {
         'name': type ~ '/' ~ post.slug,
+        'score': 1000,
         'content': function('html_entity_decode', post.post_content) | raw,
     } %}
     {% set integrations_test = integrations_test|merge([snippet_object]) %}
@@ -29,6 +30,7 @@
 {% set shortcode_completions = [
     {
         'name': 'twig',
+        'score': 1000,
         'content': function('html_entity_decode', '[twig] 
             {# Your markup goes here #} 
             {# To live preview, wrap this in a div with the class "live-preview" #} 
@@ -38,6 +40,7 @@
     },
     {
         'name': 'twig/div',
+        'score': 1000,
         'content': function('html_entity_decode', '<div class="live-shortcode"> 
             [twig]
                 {# Your div content here #} 
@@ -46,6 +49,7 @@
     },
     {
         'name': 'twig/section',
+        'score': 1000,
         'content': function('html_entity_decode', '<section class="live-shortcode"> 
             [twig]
                 {# Your section content here #} 
@@ -54,6 +58,7 @@
     },
     {
         'name': 'debug',
+        'score': 1001,
         'content': function('html_entity_decode', '
     {# use set state with the value you want to debug #}
     {{ include("@partials/debug.twig") }}')|raw
@@ -65,15 +70,33 @@
 {% endfor %}
 
 
-<script>
-const snippet_editor = ace.edit("lc-html-editor");
-snippet_editor.setOptions({
-    enableSnippets: true,
-    mode: "ace/mode/html",
-})
-var SnippetManager = ace.require("ace/snippets").snippetManager;
-var integrations_test = {{ integrations_test|json_encode|raw }};
-console.log("Snippets Registered: ", integrations_test)
+<script defer>
+    {# var beautify = ace.require("ace/ext/beautify"); // get reference to extension #}
 
-SnippetManager.register(integrations_test, "html");
+    const snippet_editor = ace.edit("lc-html-editor");
+    snippet_editor.setOptions({
+        enableSnippets: true,
+        mode: "ace/mode/twig" 
+    });
+
+    {# // Activate the beautify extension #}
+    {# beautify.beautify(snippet_editor.session); #}
+
+    console.log('Snippet Editor: ', snippet_editor);
+    var SnippetManager = ace.require("ace/snippets").snippetManager;
+    var integrations_test = {{ integrations_test|json_encode|raw }};
+    console.log("Snippets Registered: ", integrations_test);
+
+    SnippetManager.register(integrations_test, "twig");
+
+   
+    snippet_editor.session.on('changeMode', function() {
+        if (snippet_editor.session.getMode().$id !== "ace/mode/twig") {
+            snippet_editor.session.setMode("ace/mode/twig"); 
+            console.log("Mode was changed. Resetting to twig.");
+        }
+
+       
+        console.log("Current Editor Config: ", snippet_editor.getOptions({}));
+    });
 </script>

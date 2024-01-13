@@ -1,0 +1,268 @@
+/* prevent body scrolling when scrolling via wayfinder panel */
+body {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+}
+
+.d-none {
+  display: none;
+}
+
+/* WINBOX Main structure*/
+
+@keyframes popup {
+  0% {
+    transform: scale(0.8);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+.winbox {
+  animation: popup 0.3s cubic-bezier(0.3, 1, 0.3, 1) forwards;
+}
+
+#editing-panel-window {
+  z-index: 999999;
+}
+
+#editing-panel-content {
+  padding-top: 12px;
+}
+
+/* Winbox Body */
+
+.wb-body {
+  background-color: var(--color-interface-bg);
+}
+
+/* Add <main> wrap to the structure */
+/* Change <main> with <header> of <footer> for each editing session */
+.wb-body::before {
+  content: "<main>";
+  position: absolute;
+  top: 7px;
+  color: var(--color-accents);
+  left: 6px;
+  font-size: 11px;
+  font-family: monospace;
+}
+
+#editing-panel-content::after {
+  content: "<main>";
+  position: absolute;
+  color: var(--color-accents);
+  left: 6px;
+  font-size: 11px;
+  font-family: monospace;
+  margin-top: -0.5rem;
+}
+
+/* Winbox Header */
+
+.wb-header {
+  border-bottom: 1px solid var(--color-interface-bg-dark);
+}
+
+/* Icons */
+.wb-close {
+  background-position: 10px center;
+}
+
+.wb-close,
+.wb-min {
+  background-size: 11px auto;
+}
+
+.wb-close:hover,
+.wb-min:hover {
+  background-color: var(--color-interface-bg-dark);
+}
+
+/* Title */
+.wb-title {
+  font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+}
+
+/* "WAYFINDER" EDITOR TREE */
+
+/* Parent Element */
+
+ul#lc-editor-tree-id ul {
+  position: relative;
+}
+
+ul#lc-editor-tree-id li:hover {
+  background: var(--color-interface-bg-dark);
+  border-radius: 0.1rem;
+}
+
+a.lc-editor-tree-element-note {
+  cursor: pointer;
+}
+
+/* name of the element */
+ul#lc-editor-tree-id li a {
+  color: var(--color-lightgrey);
+  font-size: 0.8rem;
+  vertical-align: text-bottom;
+  line-height: 1.6;
+  padding: 3px 0px;
+  margin-left: 2px;
+}
+
+ul#lc-editor-tree-id li a:hover {
+  color: white !important;
+}
+
+/* Edit prop. - view element - view code action */
+ul#lc-editor-tree-id li a span {
+  color: var(--color-accents);
+  font-size: 0.8rem;
+  vertical-align: text-bottom;
+  line-height: 1.6;
+  padding: 3px 0px;
+}
+
+ul#lc-editor-tree-id li a span:hover {
+  color: var(--color1);
+}
+
+ul#lc-editor-tree-id li a:active span {
+  color: var(--color2);
+}
+
+ul.list__wayfinder__el {
+  padding: 0 0 0 0 !important;
+}
+
+.nested-sort {
+  /* your styles here */
+  background-color: aqua;
+}
+
+.nested-sort li {
+  /* your styles here */
+  background-color: lightblue;
+}
+
+.nested-sort .ns-dragged {
+  /* when draggaed */
+  background-color: red;
+}
+
+.nested-sort .ns-targeted {
+  /* destination list item */
+  background-color: yellow;
+}
+
+.nested-sort .ns-placeholder {
+  /* when dragging */
+  background-color: green;
+}
+
+.tooltip__wayfinder__lc {
+  display: inline-block;
+  border-bottom: 1px dotted black;
+  /* If you want dots under the hoverable text */
+}
+
+/* Carret icons for structure navigation */
+/* zoomin - open action */
+icon.lc-editor-tree-carret {
+  color: var(--color-accents);
+  cursor: zoom-in;
+  margin: 0 0 0 0.25rem;
+}
+
+/* zoomout - close action */
+icon.lc-editor-tree-carret.mdi-menu-down {
+  vertical-align: middle;
+  cursor: zoom-out;
+}
+
+/* icon cursor change for the deepest element */
+icon.lc-editor-tree-carret.mdi-square-medium {
+  cursor: default;
+}
+
+/* Tooltip__wayfinder__lc text */
+.tooltip__wayfinder__lc .tooltip__wayfinder__lctext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+
+  /* Position the tooltip__wayfinder__lc text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+
+/* Show the tooltip__wayfinder__lc text when you mouse over the tooltip__wayfinder__lc container */
+.tooltip__wayfinder__lc:hover .tooltip__wayfinder__lctext {
+  /* visibility: visible; */
+}
+
+/* grabbed from https://vanillaframework.io/docs/patterns/list-tree */
+
+.p-list-tree {
+  border-left: 1px solid var(--color-accents);
+  list-style-type: none;
+  margin-left: 1rem;
+  padding: 0 0 0 0.25rem;
+}
+
+.p-list-tree__item {
+  margin-top: 0.125rem;
+  position: relative;
+}
+
+.p-list-tree__toggle {
+  background: rgba(0, 0, 0, 0);
+  border: 0;
+  font-weight: normal;
+  margin: 0 0.5rem 0 -1.75rem;
+  padding: 0 0.5rem 0 1.75rem;
+  transition-duration: 0s;
+}
+
+.p-list-tree__item::before {
+  background: var(--color-accents);
+  content: " ";
+  display: block;
+  height: 1px;
+  left: -0.25rem;
+  pointer-events: none;
+  position: absolute;
+  top: 0.625rem;
+  width: 0.625rem;
+}
+
+.p-lc-editor-tree-li-node::before {
+  background: var(--color-accents);
+  content: " ";
+  display: block;
+  height: 1px;
+  left: -0.25rem;
+  pointer-events: none;
+  position: absolute;
+  top: 0.625rem;
+  width: 0.625rem;
+}
+
+ul>li>ul>li.lc-editor-tree-li-node {
+  margin-left: 0.25rem;
+}
+
+ul.sublist__ul {
+  margin-left: 0.7rem;
+}

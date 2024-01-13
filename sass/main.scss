@@ -2,10 +2,18 @@
 // MAIN.SCSS
 // THIS IS THE MAIN SCSS PIPELINE START
 //////////////////////////////////////////////////
- 
+
+@use "atomic-vars/main" as _vars; // Open Props SCSS
+
 //IMPORT BOOTSTRAP 
 // @import "bootstrap-loader"; 
 
+// Winden Tailwind Support 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// @import 'pico-scss/pico'; // PicoCSS for  SCSS
 
 // // THE THEME STUFF 
 // @import "wp_basic_styles";      
