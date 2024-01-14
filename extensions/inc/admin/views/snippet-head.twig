@@ -69,6 +69,18 @@
     {% set integrations_test = integrations_test|merge([shortcode]) %}
 {% endfor %}
 
+{% for file in files %}
+
+{% set snippet_object = {
+    'name': file.name,
+    'score': 1000,
+    'content': function('html_entity_decode', file.content) | raw,
+} %}
+{% set integrations_test = integrations_test|merge([snippet_object]) %}
+
+
+{% endfor %}
+
 
 <script defer>
     {# var beautify = ace.require("ace/ext/beautify"); // get reference to extension #}

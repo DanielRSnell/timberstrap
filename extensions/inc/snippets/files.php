@@ -7,6 +7,7 @@ function get_template_contents() {
     // Core directories
     $core_directories = [
         'blocks' => 'template-livecanvas-blocks',
+        'primitives' => 'template-livecanvas-primitives',
         'dynamic' => 'template-livecanvas-dynamic',
         'partials' => 'template-livecanvas-partials',
         'sections' => 'template-livecanvas-sections',
