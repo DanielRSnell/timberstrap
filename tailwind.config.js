@@ -1,3 +1,8 @@
+// Copy this into Winden's Tailwind Config and make sure you're using version 1.1.10
+
+const plugin = require('tailwindcss/plugin')
+
+
 module.exports = {
   darkMode: 'class',
   theme: {
@@ -48,10 +53,43 @@ module.exports = {
         error: {},
         info: {},
       },
+	fontFamily: {
+      body: [
+        'Inter',
+        'ui-sans-serif',
+        'system-ui',
+        '-apple-system',
+        'system-ui',
+        'Segoe UI',
+        'Roboto',
+        'Helvetica Neue',
+        'Arial',
+        'Noto Sans',
+        'sans-serif',
+        'Apple Color Emoji',
+        'Segoe UI Emoji',
+        'Segoe UI Symbol',
+        'Noto Color Emoji',
+      ],
+      sans: [
+        'Inter',
+        'ui-sans-serif',
+        'system-ui',
+        '-apple-system',
+        'system-ui',
+        'Segoe UI',
+        'Roboto',
+        'Helvetica Neue',
+        'Arial',
+        'Noto Sans',
+        'sans-serif',
+        'Apple Color Emoji',
+        'Segoe UI Emoji',
+        'Segoe UI Symbol',
+        'Noto Color Emoji',
+      ],
     },
-  },
-  corePlugins: {
-    preflight: true,
+    },
   },
   plugins: [
     require('flowbite-typography'),
@@ -59,12 +97,15 @@ module.exports = {
     require('@tailwindcss/forms'),
     require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/container-queries'),
-    require('flowbite'),
-	  plugin(function({ addVariant }) {
+    require('flowbite/plugin'),
+	plugin(function({ addVariant }) {
       addVariant('htmx-settling', ['&.htmx-settling', '.htmx-settling &'])
       addVariant('htmx-request',  ['&.htmx-request',  '.htmx-request &'])
       addVariant('htmx-swapping', ['&.htmx-swapping', '.htmx-swapping &'])
       addVariant('htmx-added',    ['&.htmx-added',    '.htmx-added &'])
     })
   ],
+  corePlugins: {
+    preflight: true,
+  },
 }
