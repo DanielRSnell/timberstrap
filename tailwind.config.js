@@ -1,9 +1,12 @@
 // Copy this into Winden's Tailwind Config and make sure you're using version 1.1.10
 
 const plugin = require('tailwindcss/plugin')
+const coloars = require('tailwindcss/colors')
 
 
 module.exports = {
+  mode: 'jit',
+  content: ['./**/*.{php, twig, html, css}', './scripts/index.html'],
   darkMode: 'class',
   theme: {
     extend: {
@@ -95,8 +98,6 @@ module.exports = {
     require('flowbite-typography'),
 	  require('@tailwindcss/typography'),
     require('@tailwindcss/forms'),
-    require('@tailwindcss/aspect-ratio'),
-    require('@tailwindcss/container-queries'),
     require('flowbite/plugin'),
 	plugin(function({ addVariant }) {
       addVariant('htmx-settling', ['&.htmx-settling', '.htmx-settling &'])

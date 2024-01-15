@@ -26,6 +26,9 @@ require_once __DIR__ . '/vendor/autoload.php';
 // Load Extensions Controller (Timber, etc.)
 require get_stylesheet_directory() . '/extensions/controllers.php';
 
+// Enable Endpoints
+require get_stylesheet_directory() . '/scripts/endpoints_filter.php';
+
 
 // DE-ENQUEUE PARENT THEME BOOTSTRAP JS BUNDLE
 add_action( 'wp_print_scripts', function(){
@@ -93,3 +96,19 @@ add_filter("lc_editor_header", function () { ?>
     src="<?php echo get_stylesheet_directory_uri(); ?>/js/wayfinder/index.js"></script>
 
 <?php });
+
+function enqueue_tailwind_stylesheet() {
+    // Get the URI of the child theme's directory
+    $child_theme_uri = get_stylesheet_directory_uri();
+
+    // Get the absolute path to the Tailwind CSS file
+    $tailwind_css_file_path = get_stylesheet_directory() . '/css-output/tailwind.css';
+
+    // Get the last modified time of the Tailwind CSS file
+    $version = file_exists($tailwind_css_file_path) ? filemtime($tailwind_css_file_path) : false;
+
+    // Enqueue the Tailwind CSS file with the version number as a query parameter
+    wp_enqueue_style('tailwind-css', $child_theme_uri . '/css-output/tailwind.css', array(), $version);
+}
+
+add_action('wp_enqueue_scripts', 'enqueue_tailwind_stylesheet');
