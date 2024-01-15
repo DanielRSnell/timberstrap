@@ -8,6 +8,20 @@ add_action('admin_notices', function() {
 });
 
 
+add_filter('f!winden/core/worker:worker_npm_package', 'example_filter_worker_npm_package', 10);
+
+function example_filter_worker_npm_package(string $npm_package): string 
+{
+    // rename the `flowbite/plugin` plugin to `flowbite` on the plugin list
+    $npm_package = str_replace('flowbite/plugin', 'flowbite', $npm_package);
+
+    // remove `tailwindcss/colors` from the plugin list 
+    $npm_package = str_replace('tailwindcss/colors', '', $npm_package);
+
+    return $npm_package;
+}
+
+
 function livecanvas_views_append_content_payload($content) {
     // Define an array of post types to include in the query.
     $post_types = [

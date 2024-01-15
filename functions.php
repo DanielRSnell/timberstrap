@@ -101,3 +101,46 @@ add_filter("lc_editor_header", function () { ?>
 add_filter("lc_editor_before_body_closing", function () {
     include(get_stylesheet_directory() . '/js/wayfinder/editing-panel-content.html');
 });
+
+function display_custom_post_types($atts) {
+    // Extract shortcode attributes
+    $atts = shortcode_atts(array(
+        'tailwind'   => 'false',
+        'post_types' => 'post'
+    ), $atts, 'display_posts');
+
+    // Check if Tailwind CSS is to be used
+    $use_tailwind = $atts['tailwind'] === 'true';
+
+    // Convert post types string to array
+    $types = explode(',', $atts['post_types']);
+
+    // WP_Query arguments
+    $args = array(
+        'post_type'      => $types,
+        'posts_per_page' => -1
+    );
+
+    // The Query
+    $the_query = new WP_Query($args);
+    $html = '';
+
+    // The Loop
+    if ($the_query->have_posts()) {
+        $html .= $use_tailwind ? '<div class="tailwind-class">' : '<div>';
+        while ($the_query->have_posts()) {
+            $the_query->the_post();
+            $html .= '<h2>' . get_the_title() . '</h2>';
+            $html .= '<div>' . get_the_content() . '</div>';
+        }
+        $html .= '</div>';
+    } else {
+        // no posts found
+        $html .= '<p>No posts found.</p>';
+    }
+
+    // Restore original Post Data
+    wp_reset_postdata();
+
+    return $html;
+}

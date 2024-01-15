@@ -24,8 +24,8 @@ $base_dir = get_stylesheet_directory() . '/extensions/winden/';
 
 // Register Paths for File Loader.
 require $base_dir . 'inc/load_cache_builder.php';
-require $base_dir . 'inc/modify_config.php';
-require $base_dir . 'inc/modify_global_css.php';
+// require $base_dir . 'inc/modify_config.php';
+// require $base_dir . 'inc/modify_global_css.php';
 require $base_dir . 'inc/modify_payload.php';
 require $base_dir . 'inc/load_completions.php';
 

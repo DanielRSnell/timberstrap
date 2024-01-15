@@ -35,12 +35,13 @@ add_filter('f!winden/core/runtime:tailwind_config', function($config) {
     if (file_exists($tailwind_config_path)) {
         // Read the contents of the tailwind.config.js file
         $tailwind_config_content = file_get_contents($tailwind_config_path);
-
+        // make a filter for the changing the config before it is returned
+        $modified_config = apply_filters('winden_tailwind_config', $tailwind_config_content);
         // Replace 'module.exports' with 'tailwind.config' in the file content
         // $tailwind_config_content = str_replace('module.exports', 'tailwind.config', $tailwind_config_content);
 
         // Return the modified content
-        return $tailwind_config_content;
+        return $modified_config;
     }
     
     // If the file doesn't exist, return the original config

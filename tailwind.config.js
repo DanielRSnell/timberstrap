@@ -1,4 +1,5 @@
 module.exports = {
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
@@ -53,9 +54,17 @@ module.exports = {
     preflight: true,
   },
   plugins: [
-    require('@tailwindcss/typography'),
+    require('flowbite-typography'),
+	  require('@tailwindcss/typography'),
     require('@tailwindcss/forms'),
-    require('@tailwindcss/line-clamp'),
     require('@tailwindcss/aspect-ratio'),
+    require('@tailwindcss/container-queries'),
+    require('flowbite'),
+	  plugin(function({ addVariant }) {
+      addVariant('htmx-settling', ['&.htmx-settling', '.htmx-settling &'])
+      addVariant('htmx-request',  ['&.htmx-request',  '.htmx-request &'])
+      addVariant('htmx-swapping', ['&.htmx-swapping', '.htmx-swapping &'])
+      addVariant('htmx-added',    ['&.htmx-added',    '.htmx-added &'])
+    })
   ],
 }
