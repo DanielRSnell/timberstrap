@@ -29,6 +29,10 @@ body {
     @apply bg-gray-50;
 }
 
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
+}
 
 /* Define the .scrollbar-hide class */
 .scrollbar-hide {
@@ -58,7 +62,7 @@ body {
 }
 
 .brand-name-gradient {
-    @apply bg-gradient-to-br from-accent-400 to-support-400 text-transparent bg-clip-text;
+    @apply bg-gradient-to-br from-support-400 via-accent-400 to-support-400 text-transparent bg-clip-text;
 }
 
 .brand-logo-gradient {

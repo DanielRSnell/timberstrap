@@ -62,7 +62,7 @@ function register_timberstrap_settings() {
     register_setting('timberstrap_options_group', 'markup_parsing');
     // Register a new setting for Alpine Integration
     register_setting('timberstrap_options_group', 'alpine_integration');
-    register_setting('timberstrap_options_group', 'winden_integration');
+    register_setting('timberstrap_options_group', 'tailwind_integration');
 
 
     // Register a new section in the "Timberstrap" page
@@ -74,9 +74,9 @@ function register_timberstrap_settings() {
     );
 
      add_settings_field(
-        'winden_integration_field',
-        'Winden Integration',
-        'winden_integration_field_callback',
+        'tailwind_integration_field',
+        'tailwind Integration',
+        'tailwind_integration_field_callback',
         'timberstrap-options',
         'timberstrap_settings_section'
     );
@@ -115,7 +115,7 @@ function alpine_integration_field_callback() {
     echo '<input type="checkbox" id="alpine_integration" name="alpine_integration" value="1"' . checked(1, $alpine_integration, false) . '/>';
 }
 
-function winden_integration_field_callback() {
-    $winden_integration = get_option('winden_integration');
-    echo '<input type="checkbox" id="winden_integration" name="winden_integration" value="1"' . checked(1, $winden_integration, false) . '/>';
+function tailwind_integration_field_callback() {
+    $tailwind_integration = get_option('tailwind_integration');
+    echo '<input type="checkbox" id="tailwind_integration" name="tailwind_integration" value="1"' . checked(1, $tailwind_integration, false) . '/>';
 }

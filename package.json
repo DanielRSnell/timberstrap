@@ -4,9 +4,13 @@
   "description": "This child theme for Picostrap leverages the Timber 2.X library, enabling advanced templating in WordPress using the Twig engine. It introduces the 'twig' shortcode for inline Twig templating, providing a seamless integration of Twig directly within WordPress posts and pages.",
   "main": "tailwind.config.js",
   "scripts": {
-    "createBundle": "node ./scripts/createBundle.mjs",
     "build:tailwind": "npx tailwindcss -i ./css-output/bundle.css -o ./css-output/tailwind.css",
-    "build": "npm run createBundle && npm run build:tailwind",
+    "build:scss": "npx sass ./sass/main.scss ./css-output/bundle.css",
+    "build:html": "node ./scripts/createBundle.mjs",
+    "build:tasks": "npm run build:scss && npm run build:tailwind && npm run build:html",
+    "autcomplete": "GENERATE_AUTOCOMPLETE=true npx tailwindcss -i ./css-output/bundle.css -o ./css-output/autocomplete.css && node ./scripts/autocomplete.mjs",
+    "dev": "vite",
+    "build": "vite build",
     "watch": "nodemon --watch template-livecanvas-blocks --watch template-livecanvas-sections --watch template-livecanvas-partials --watch template-livecanvas-dynamic-templates --watch template-livecanvas-snippets --watch css-output/bundle.css --exec \"npm run build\""
   },
   "repository": {
@@ -25,12 +29,15 @@
     "@tailwindcss/typography": "^0.5.10",
     "autoprefixer": "^10.4.16",
     "cheerio": "^1.0.0-rc.12",
+    "dotenv": "^16.3.1",
     "flowbite": "^2.2.1",
     "flowbite-typography": "^1.0.3",
     "he": "^1.2.0",
     "node-fetch": "^3.3.2",
     "nodemon": "^3.0.2",
     "postcss": "^8.4.33",
-    "tailwindcss": "^3.4.1"
+    "scss": "^0.2.4",
+    "tailwindcss": "^3.4.1",
+    "vite": "^5.0.11"
   }
 }

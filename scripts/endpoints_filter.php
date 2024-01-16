@@ -5,6 +5,10 @@ add_action('rest_api_init', function () {
         'methods' => 'GET',
         'callback' => 'fetch_concatenated_content',
     ));
+    register_rest_route('timberstrap/v1', '/fetch_css', array(
+        'methods' => 'GET',
+        'callback' => 'mytheme_get_custom_css',
+    ));
 });
 
 function fetch_concatenated_content($request) {
@@ -34,3 +38,14 @@ function add_more_post_types($post_types) {
     return $post_types;
 }
 add_filter('my_custom_endpoint_post_types', 'add_more_post_types');
+
+
+function mytheme_get_custom_css() {
+    $custom_css = wp_get_custom_css(); // Adjust this based on how your theme stores custom CSS
+
+    if (empty($custom_css)) {
+        return new WP_Error('no_css', 'No custom CSS found.', array('status' => 404));
+    }
+
+    return new WP_REST_Response($custom_css, 200);
+}

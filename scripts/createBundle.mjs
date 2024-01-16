@@ -1,9 +1,12 @@
 // Import modules
-import getConfig from './config.mjs';
 import fetch from 'node-fetch';
-import { writeFile } from 'fs/promises';
+import { writeFile, appendFile } from 'fs/promises';
+import dotenv from 'dotenv';
 
-const config = getConfig();
+
+dotenv.config();
+const wp_local = process.env.VITE_WP_LOCAL_URL;
+const endpoint = process.env.VITE_ENDPOINT;
 
 function unescapeJavaScriptString(str) {
     return str
@@ -16,27 +19,48 @@ function unescapeJavaScriptString(str) {
 
 async function updateIndexHtml() {
     try {
-        // Construct the URL
-        const url = config.url + config.endpoint;
-        console.log(url, config, 'endpoint url');
+        // Construct the URLs
+        const html_url = wp_local + endpoint + '/fetch_content';
+        const css_url = wp_local + endpoint + '/fetch_css';
 
-        // Fetch the data
-        const response = await fetch(url);
-        let htmlContent = await response.text();
-
-        // Unescape the HTML content
+        // Fetch HTML content
+        const htmlResponse = await fetch(html_url);
+        let htmlContent = await htmlResponse.text();
         htmlContent = unescapeJavaScriptString(htmlContent);
 
-        // Path to the index.html file
+        // Fetch CSS content
+        const cssResponse = await fetch(css_url);
+        const cssContent = await cssResponse.text();
+
+        // Path to the index.html file and bundle.css
         const indexPath = './scripts/index.html';
+        const cssPath = './css-output/bundle.css';
+
+        // Template for index.html
+        const htmlTemplate = `
+        <html>
+        <head>
+        </head>
+        <body>
+            ${htmlContent}
+        </body>
+        </html>
+        `;
 
         // Write the unescaped HTML content to index.html
-        await writeFile(indexPath, htmlContent, 'utf8');
-
+        await writeFile(indexPath, htmlTemplate, 'utf8');
         console.log('index.html has been updated successfully');
+
+        if (!cssContent.data) {
+            // Append the fetched CSS content to bundle.css
+            await appendFile(cssPath, unescapeJavaScriptString(cssContent).split('"').join(''), 'utf8');
+        }
+
+        console.log('CSS content has been appended to bundle.css successfully');
     } catch (error) {
         console.error('Error occurred:', error);
     }
 }
 
 updateIndexHtml();
+

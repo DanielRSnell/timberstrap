@@ -1,12 +1,26 @@
 // Copy this into Winden's Tailwind Config and make sure you're using version 1.1.10
 
 const plugin = require('tailwindcss/plugin')
-const coloars = require('tailwindcss/colors')
+// require dotenv
 
 
 module.exports = {
   mode: 'jit',
-  content: ['./**/*.{php, twig, html, css}', './scripts/index.html'],
+  content: [
+    // Existing paths
+    // './**/*.{php,twig,html,css}',
+    './scripts/index.html',
+    './css-output/bundle.css',
+    // Paths for template-livecanvas-*
+    // './template-livecanvas-blocks/**/*.{php,twig,html,css}',
+    // './template-livecanvas-sections/**/*.{php,twig,html,css}',
+    // './template-livecanvas-partials/**/*.{php,twig,html,css}',
+    // './template-livecanvas-dynamic-templates/**/*.{php,twig,html,css}',
+    // './template-livecanvas-snippets/**/*.{php,twig,html,css}',
+  ],
+  safelist: process.env.GENERATE_AUTOCOMPLETE
+      ? [{ pattern: /./ }]
+      : [], 
   darkMode: 'class',
   theme: {
     extend: {
@@ -58,7 +72,7 @@ module.exports = {
       },
 	fontFamily: {
       body: [
-        'Inter',
+        'Montserrat',
         'ui-sans-serif',
         'system-ui',
         '-apple-system',
@@ -75,7 +89,7 @@ module.exports = {
         'Noto Color Emoji',
       ],
       sans: [
-        'Inter',
+        'Montserrat',
         'ui-sans-serif',
         'system-ui',
         '-apple-system',

@@ -1,0 +1,41 @@
+<script id="tailwind-completions" defer>
+	// Assuming you have already created the Ace Editor instance
+var lc_html_editor = ace.edit("lc-html-editor");
+// Set mode to twig
+lc_html_editor.session.setMode("ace/mode/twig");
+
+var langTools = ace.require("ace/ext/language_tools");
+
+const data = {{ suggestions }}
+
+const tw_arr = [];
+
+// Use 'forEach' instead of 'map' since we are not transforming each item
+data.forEach((item) => {
+if (!item.includes("--tw") && !item.startsWith("-")) {
+console.log(item);
+tw_arr.push({caption: item, value: item, meta: "tailwind"});
+}
+});
+
+
+// Initialize the suggestions array with filtered Tailwind CSS classes
+var smartClasses = tw_arr;
+
+// Create a custom Ace Editor completer for the autocomplete suggestions
+var smartCompleter = {
+getCompletions: function (editor, session, pos, prefix, callback) {
+let lineTillCursor = session.getDocument().getLine(pos.row).substring(0, pos.column);
+
+// Check if we are editing a "class" attribute value or after an @apply directive
+if (/class=["|'][^"']*$/i.test(lineTillCursor) || /@apply\s+[^;]*$/i.test(lineTillCursor)) {
+callback(null, smartClasses);
+}
+}
+};
+
+// Add the Tailwind CSS completer to the Ace Editor instance
+langTools.addCompleter(smartCompleter);
+
+// Snippets isn't working but everything else does.
+</script>

@@ -30,10 +30,10 @@ require $BASE_DIR . '/inc/controller.php'; // Extension admin settings page.
 // Get the values of the options
 $markup_parsing_enabled = get_option('markup_parsing');
 $alpine_integration_enabled = get_option('alpine_integration');
-$winden_integration_enabled = get_option('winden_integration');
+$tailwind_integration_enabled = get_option('tailwind_integration');
 
-if ($winden_integration_enabled) {
-    require $BASE_DIR . '/winden/controller.php';
+if ($tailwind_integration_enabled) {
+    require $BASE_DIR . '/tailwind/controller.php';
 }
 
 if ($markup_parsing_enabled) {
