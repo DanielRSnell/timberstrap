@@ -1,4 +1,4 @@
-# Picostrap Child Theme with Timber 2.X
+# Picostrap Child Theme with Timber 2.X (Updates Coming)
 
 This child theme for Picostrap leverages the Timber 2.X library, enabling advanced templating in WordPress using the Twig engine. It introduces the 'twig' shortcode for inline Twig templating, providing a seamless integration of Twig directly within WordPress posts and pages.
 
