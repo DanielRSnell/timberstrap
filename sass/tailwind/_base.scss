@@ -1,0 +1,50 @@
+// tailwind/_base.scss
+// Comprehensive Guide
+
+/*
+This file is part of your Tailwind CSS setup and is used to extend or customize the base styles of Tailwind. Here's how to use it effectively:
+
+1. What is `@layer base`:
+   - The `@layer base` directive allows you to inject your custom styles into the base layer of Tailwind CSS.
+   - The base layer is processed first and includes styles like normalize.css and default styles for HTML elements.
+
+2. How to Use:
+   - Inside the `@layer base { ... }` block, you can define your custom styles.
+   - These styles should typically be global styles or resets that you want to apply broadly across your application.
+
+3. Example Usage:
+   - Resetting default styles:
+     ```
+     @layer base {
+       h1 {
+         margin-top: 0;
+       }
+       p {
+         line-height: 1.5;
+       }
+     }
+     ```
+   - Adding global styles:
+     ```
+     @layer base {
+       body {
+         font-family: 'Open Sans', sans-serif;
+       }
+       a {
+         color: #3490dc;
+         text-decoration: none;
+       }
+     }
+     ```
+
+4. Best Practices:
+   - Keep the styles in this file minimal and global in nature.
+   - Avoid overriding Tailwind's utility classes here; use custom components or utilities for that purpose.
+
+By organizing your global and reset styles in the `tailwind/_base.scss`, you maintain a clean and structured approach to your project's styling.
+*/
+
+
+@layer base {
+    
+}

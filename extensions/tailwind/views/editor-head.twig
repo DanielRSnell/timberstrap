@@ -1,0 +1,13 @@
+{# {{ include('@snippet/debug.twig') }} #}
+
+{% if isAdmin and isTailwind %}
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script id="tailwind-scripts">
+		{{ config | raw }}</script>
+
+	<style type="text/tailwindcss">
+
+		{{ tailwindCSS | raw }}
+
+	</style>
+{% endif %}

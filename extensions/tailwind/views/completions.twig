@@ -13,7 +13,6 @@ const tw_arr = [];
 // Use 'forEach' instead of 'map' since we are not transforming each item
 data.forEach((item) => {
 if (!item.includes("--tw") && !item.startsWith("-")) {
-console.log(item);
 tw_arr.push({caption: item, value: item, meta: "tailwind"});
 }
 });

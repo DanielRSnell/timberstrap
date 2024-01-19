@@ -1,0 +1,53 @@
+// tailwind/_utils.scss
+// Comprehensive Guide
+
+/*
+The `tailwind/_utils.scss` file is an integral part of your Tailwind CSS project, focusing on defining custom utility classes. Here's a guide to effectively use this file:
+
+1. Purpose of `@layer utilities`:
+   - The `@layer utilities` directive is used to create custom utility classes in Tailwind CSS.
+   - This layer is processed after the components layer, allowing these utilities to override both base and component styles if needed.
+
+2. How to Use:
+   - Inside the `@layer utilities { ... }` block, you define your custom utility classes.
+   - These utilities are meant to be single-purpose classes that can be applied to HTML elements for specific styling needs.
+
+3. Example Usage:
+   - Creating a margin utility:
+     ```
+     @layer utilities {
+       .margin-md {
+         margin: 1rem;
+       }
+     }
+     ```
+   - Defining a text utility:
+     ```
+     @layer utilities {
+       .text-shadow {
+         text-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+       }
+     }
+     ```
+   - Adding responsive utilities:
+     ```
+     @layer utilities {
+       @media (min-width: 768px) {
+         .lg-text-center {
+           text-align: center;
+         }
+       }
+     }
+     ```
+
+4. Best Practices:
+   - Use this file for single-purpose, reusable utility classes, not for component styles or global styles.
+   - Keep your utility classes simple and focus on one function per class.
+   - Consider using Tailwind's configuration file to extend existing utilities or add new ones, leveraging Tailwind's built-in responsive and state variants.
+
+The `tailwind/_utils.scss` file helps you maintain a clean and organized codebase by separating your custom utility classes, ensuring they are easily accessible and reusable across your project.
+*/
+
+@layer utilities {
+
+}

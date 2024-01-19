@@ -1,0 +1,73 @@
+<script src="https://cdn.jsdelivr.net/npm/@unocss/runtime"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@unocss/reset/tailwind.min.css">
+
+
+<script defer>
+	document.addEventListener('alpine:init', () => {
+Alpine.data('fullScreenMode', () => ({
+full_admin: true,
+checkAlpine() {
+console.log('Alpine is active');
+this.full_admin = !this.full_admin; // Toggle the state
+console.log('full_admin:', this.full_admin); // Debugging log
+}
+}));
+
+// Watch for changes in full_admin to update styles
+
+});
+</script>
+
+<div id="cover-wrap" class="bg-white h-screen" x-data="fullScreenMode">
+	{{include('@admin/components/header.twig') }}
+	<main class="-mt-32">
+		<div class="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
+			<div class="bg-gray-100/30 ring-1 ring-gray-200/50 shadow-inner p-2 rounded-3xl">
+				<div class="rounded-2xl bg-white px-5 py-6 sm:px-6">
+
+
+					<div class="flex flex-col gap-4 w-full max-w-7xl mx-auto">
+						<h1 class="text-3xl text-gray-800 font-black">Timberstrap Options</h1>
+
+						<form id="timberstrap-actions" method="post" action="options.php" class="flex flex-col gap-2">
+
+							{{ settings_fields|raw }}
+							{{ settings_sections|raw }}
+							<button class="relative border-1 border-solid border-gray-800 rounded-md px-3 py-1 text-base text-gray-800 max-w-[150px] hover:bg-gray-800 hover:text-gray-50 transition-300 cursor-pointer">
+								<input class=" font-semibold cursor-pointer" type="submit" value="Save Changes"/>
+							</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</main></div><style>
+
+#wpcontent {
+	padding-left: 0;
+}
+
+[un-cloak] {
+	display: none;
+}
+
+#timberstrap-actions > p,
+h2 {
+	display: none;
+}
+
+#cover-wrap {
+	background: white;
+	position: absolute; /* Ensures the div stays in place even when scrolling */
+	top: 0;
+	left: 0; /* Ensures it covers the entire screen */
+	right: 0; /* Ensures it covers the entire screen */
+	bottom: 0; /* Ensures it covers the entire screen */
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+	align-items: stretch;
+	z-index: 9999; /* Ensures the div stays on top of everything else */
+	box-sizing: border-box; /* Ensures padding doesn't affect the overall dimensions */
+}</style>

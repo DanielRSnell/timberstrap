@@ -1,15 +1,43 @@
-// Copy this into Winden's Tailwind Config and make sure you're using version 1.1.10
+/**
+ * Main Tailwind Configuration (tailwind.config.js)
+ *
+ * Purpose:
+ * This configuration file is the primary Tailwind CSS configuration for the project. It includes settings 
+ * for JIT mode, content paths, safelisting, and plugins necessary for both development and production environments.
+ *
+ * Integration with Editor Configuration:
+ * - The `editorConfig`, imported from './tailwind.editor.js', contains specific settings tailored for the 
+ *   LiveCanvas editor. This configuration enhances the development experience by providing real-time visual 
+ *   feedback within the editor.
+ * - By integrating `editorConfig` into the main configuration file, we ensure a consistent styling experience 
+ *   across the entire project. This integration allows for seamless transitions of styles and themes from the 
+ *   LiveCanvas editor to the broader project context.
+ * - It's crucial to maintain alignment between `editorConfig` and this main configuration to ensure 
+ *   consistency across development and production environments.
+ *
+ * Plugins:
+ * - This configuration includes several Tailwind CSS plugins such as 'flowbite-typography', '@tailwindcss/typography', 
+ *   '@tailwindcss/forms', and 'flowbite/plugin'. These plugins extend the utility of Tailwind CSS within the project.
+ * - Custom plugins, like those adding variants for 'htmx', are also defined here, enriching the project with 
+ *   additional functionality.
+ *
+ * Usage:
+ * - For general project development, this configuration file should be used.
+ * - When working within the LiveCanvas editor, keep in mind that `editorConfig` will provide specific 
+ *   enhancements and settings that are reflected here.
+ * - Modify `editorConfig` for editor-specific changes and this file for global Tailwind CSS settings applicable 
+ *   across the project.
+ */
 
 const plugin = require('tailwindcss/plugin')
-// require dotenv
-
+const editorConfig = require('./tailwind.editor.js');
 
 module.exports = {
   mode: 'jit',
   content: [
     // Existing paths
     // './**/*.{php,twig,html,css}',
-    './scripts/index.html',
+    './extensions/inc/assets/index.html',
     './css-output/bundle.css',
     // Paths for template-livecanvas-*
     // './template-livecanvas-blocks/**/*.{php,twig,html,css}',
@@ -21,106 +49,18 @@ module.exports = {
   safelist: process.env.GENERATE_AUTOCOMPLETE
       ? [{ pattern: /./ }]
       : [], 
-  darkMode: 'class',
-  theme: {
-    extend: {
-      colors: {
-        brand: {
-          50: '#edfcf4',
-          100: '#d2f9e1',
-          200: '#aaf0ca',
-          300: '#72e3ac',
-          400: '#40cf8e',
-          500: '#16b371',
-          600: '#0a915b',
-          700: '#08744b',
-          800: '#095c3e',
-          900: '#094b34',
-          950: '#032b1d',
-        },
-        accent: {
-          50: '#fdf2f8',
-          100: '#fbe8f3',
-          200: '#f9d1e8',
-          300: '#f5acd4',
-          400: '#ed6eb0',
-          500: '#e54f98',
-          600: '#d32f77',
-          700: '#b71f5d',
-          800: '#971d4e',
-          900: '#7e1d44',
-          950: '#4d0a25',
-        },
-        support: {
-          50: '#f1f7fa',
-          100: '#dceaf1',
-          200: '#bdd8e4',
-          300: '#8fbbd1',
-          400: '#5995b5',
-          500: '#3f7a9b',
-          600: '#376483',
-          700: '#32546c',
-          800: '#30475a',
-          900: '#2b3c4e',
-          950: '#192633',
-        },
-        neutral: {},
-        success: {},
-        warning: {},
-        error: {},
-        info: {},
-      },
-	fontFamily: {
-      body: [
-        'Montserrat',
-        'ui-sans-serif',
-        'system-ui',
-        '-apple-system',
-        'system-ui',
-        'Segoe UI',
-        'Roboto',
-        'Helvetica Neue',
-        'Arial',
-        'Noto Sans',
-        'sans-serif',
-        'Apple Color Emoji',
-        'Segoe UI Emoji',
-        'Segoe UI Symbol',
-        'Noto Color Emoji',
-      ],
-      sans: [
-        'Montserrat',
-        'ui-sans-serif',
-        'system-ui',
-        '-apple-system',
-        'system-ui',
-        'Segoe UI',
-        'Roboto',
-        'Helvetica Neue',
-        'Arial',
-        'Noto Sans',
-        'sans-serif',
-        'Apple Color Emoji',
-        'Segoe UI Emoji',
-        'Segoe UI Symbol',
-        'Noto Color Emoji',
-      ],
-    },
-    },
-  },
-  plugins: [
-    require('flowbite-typography'),
-	  require('@tailwindcss/typography'),
-    require('@tailwindcss/forms'),
-    require('flowbite/plugin'),
-	plugin(function({ addVariant }) {
-      addVariant('htmx-settling', ['&.htmx-settling', '.htmx-settling &'])
-      addVariant('htmx-request',  ['&.htmx-request',  '.htmx-request &'])
-      addVariant('htmx-swapping', ['&.htmx-swapping', '.htmx-swapping &'])
-      addVariant('htmx-added',    ['&.htmx-added',    '.htmx-added &'])
-    })
-  ],
-  corePlugins: {
-    preflight: true,
-  },
+  ...editorConfig,
+   plugins: [
+        require('flowbite-typography'),
+        require('@tailwindcss/typography'),
+        require('@tailwindcss/forms'),
+        require('flowbite/plugin'),
+        plugin(function({ addVariant }) {
+            addVariant('htmx-settling', ['&.htmx-settling', '.htmx-settling &']);
+            addVariant('htmx-request',  ['&.htmx-request',  '.htmx-request &']);
+            addVariant('htmx-swapping', ['&.htmx-swapping', '.htmx-swapping &']);
+            addVariant('htmx-added',    ['&.htmx-added',    '.htmx-added &']);
+        }),
+        // ... additional plugins if any ...
+    ]
 }

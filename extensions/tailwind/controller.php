@@ -54,6 +54,7 @@ function enqueue_tailwind_stylesheet() {
 add_action('wp_enqueue_scripts', 'enqueue_tailwind_stylesheet');
 
 
+// if ($development_mode_enabled) {
 
 add_action('save_post', 'send_post_request_on_update', 10, 3);
 
@@ -82,6 +83,44 @@ function send_post_request_on_update($post_ID, $post, $update) {
 }
 
 
+add_action('template_redirect', function() {
+    // Check if the user is an admin and tailwind integration is enabled
+    if (!current_user_can('administrator') || get_option('tailwind_integration') != '1') {
+        return;
+    }
+
+    add_action('wp_head', function() {
+        global $post;
+
+        $context = Timber::context();
+        $context['post'] = Timber::get_post(); // Get the current post as a Timber Post object
+
+        // Define the paths to Tailwind configuration and CSS in your child theme
+        $tailwindConfigPath = get_stylesheet_directory() . '/tailwind.editor.js';
+        $tailwindCSSPath = get_stylesheet_directory() . '/css-output/bundle.css';
+
+        // Load Tailwind configuration
+        if (file_exists($tailwindConfigPath)) {
+            $config = file_get_contents($tailwindConfigPath);
+            $tailwind_update = str_replace('module.exports', 'tailwind.config', $config);
+            $context['config'] = $tailwind_update;
+        }
+
+        // Load tailwind.css content
+        if (file_exists($tailwindCSSPath)) {
+            $context['tailwindCSS'] = file_get_contents($tailwindCSSPath);
+        }
+
+        $context['isTailwind'] = true;
+        $context['isAdmin'] = true;
+        
+        // Render the Twig template
+        Timber::render('@tailwind/editor-head.twig', $context);
+    });
+});
+
+
+
 
 
 add_filter('timber/locations', function ($paths) {
@@ -92,3 +131,4 @@ add_filter('timber/locations', function ($paths) {
 
     return $paths;
 });
+// }

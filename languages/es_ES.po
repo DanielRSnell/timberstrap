@@ -1,0 +1,826 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: picostrap5\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/picostrap5\n"
+"POT-Creation-Date: 2022-12-19T14:45:13+00:00\n"
+"PO-Revision-Date: 2022-12-19 15:48+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.2.2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: style.css\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+
+#. Theme Name of the theme
+msgid "picostrap5"
+msgstr "picostrap5"
+
+#. Theme URI of the theme
+#. Author URI of the theme
+msgid "https://picostrap.com"
+msgstr "https://picostrap.com"
+
+#. Description of the theme
+msgid ""
+"The fastest Bootstrap 5 WordPress starter theme. Experience the power of "
+"SASS, merged with the WordPress Customizer. Implementing Bootstrap 5.2.3. "
+"Please  <a target=\"_blank\" href=\"https://youtu.be/nrHFh_08w78\">watch the "
+"introduction video</a> to get started."
+msgstr ""
+"El tema de inicio de WordPress más rápido de Bootstrap 5. Experimente el "
+"poder de SASS, fusionado con el personalizador de WordPress. Implementación "
+"de Bootstrap 5.2.3. Por favor,  <a target=\"_blank\" href=\"https://youtu.be/"
+"nrHFh_08w78\">vea el video de introducción</a> para comenzar."
+
+#. Author of the theme
+msgid "The picostrap Team"
+msgstr "El equipo de picostrap"
+
+#: 404.php:78
+msgid "Page not found"
+msgstr "Página no encontrada"
+
+#: 404.php:80
+msgid "Perhaps you would like to go to our home page?"
+msgstr "¿Quizás te gustaría ir a nuestra página de inicio?"
+
+#. translators: %s: post title
+#: comments.php:37
+msgctxt "comments title"
+msgid "One thought on &ldquo;%s&rdquo;"
+msgstr "Un comentario sobre &ldquo;%s&rdquo;"
+
+#. translators: 1: number of comments, 2: post title
+#: comments.php:44
+msgctxt "comments title"
+msgid "%1$s thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] "%1$s comentario en &ldquo;%2$s&rdquo;"
+msgstr[1] "%1$s comentarios sobre &ldquo;%2$s&rdquo;"
+
+#: comments.php:64 comments.php:99
+msgid "Comment navigation"
+msgstr "Navegación de comentarios"
+
+#: comments.php:68 comments.php:103
+msgid "&larr; Older Comments"
+msgstr "&larr; Comentarios antiguos"
+
+#: comments.php:74 comments.php:109
+msgid "Newer Comments &rarr;"
+msgstr "Nuevos Comentarios &rarr;"
+
+#: header.php:40
+msgid "Skip to content"
+msgstr "Saltar al contenido"
+
+#: inc/custom-comments.php:102
+msgid "Comments are closed."
+msgstr "Los comentarios están cerrados."
+
+#: inc/customizer-assets/customizer.php:449
+msgid "Background Image Size"
+msgstr "Tamaño de imagen de fondo"
+
+#: inc/customizer-assets/customizer.php:454
+msgid "Cover"
+msgstr "Portada"
+
+#: inc/customizer-assets/customizer.php:455
+msgid "Contain"
+msgstr "Contiene"
+
+#: inc/customizer-assets/customizer.php:456
+msgid "Inherit"
+msgstr "Heredar"
+
+#: inc/customizer-assets/customizer.php:486
+msgid "Typography"
+msgstr "Tipografía"
+
+#: inc/customizer-assets/customizer.php:491
+msgid "Global Options"
+msgstr "Opciones globales"
+
+#: inc/customizer-assets/customizer.php:496
+msgid "Forms"
+msgstr "Formularios"
+
+#: inc/customizer-assets/customizer.php:501
+msgid "Buttons"
+msgstr "Botones"
+
+#: inc/customizer-assets/customizer.php:596
+msgid "Header Color in Android Chrome"
+msgstr "Color del encabezado en Android Chrome"
+
+#: inc/customizer-assets/customizer.php:612
+msgid "Hide Tagline"
+msgstr "Ocultar la descripción del sitio"
+
+#: inc/customizer-assets/customizer.php:620
+msgid "Main Navigation Bar"
+msgstr "Barra de navegación principal"
+
+#: inc/customizer-assets/customizer.php:633
+msgid "Navbar Expansion"
+msgstr "Expansión de barra de navegación"
+
+#: inc/customizer-assets/customizer.php:636
+msgid ""
+"Navbar is Collapsed on mobile, and expands to a full blown menubar on chosen "
+"breakpoint"
+msgstr ""
+"Navbar está contraído en el móvil y se expande a una barra de menú completa "
+"en el punto de interrupción elegido"
+
+#: inc/customizer-assets/customizer.php:657
+msgid "Navbar Position"
+msgstr "Posición de la barra de navegación"
+
+#: inc/customizer-assets/customizer.php:678
+msgid "Enable Page Scrolling Detection"
+msgstr "Habilitar la detección de desplazamiento de página"
+
+#: inc/customizer-assets/customizer.php:679
+msgid ""
+"Publish and exit the Customizer to see the effect. Adds a scroll-position-at-"
+"top / scroll-position-not-at-top class to the BODY element according to "
+"scroll position. Customize via CSS. Use with Navbar Position set to Fixed "
+"for best results. <!--  <a target='_blank' href='#'>Tutorial Coming Soon</a> "
+"--> "
+msgstr ""
+"Publique y salga del Personalizador para ver el efecto. Agrega una clase "
+"scroll-position-at-top / scroll-position-not-at-top al elemento BODY según "
+"la posición de desplazamiento. Personaliza a través de CSS. Úselo con la "
+"posición de la barra de navegación establecida en Fijo para obtener los "
+"mejores resultados. <!--  <a target='_blank' href='#'>Tutorial próximamente</"
+"a> --> "
+
+#: inc/customizer-assets/customizer.php:695
+msgid "Navbar Background Color"
+msgstr "Color del fondo de la barra de navegación"
+
+#: inc/customizer-assets/customizer.php:721
+msgid "Color Scheme (Menubar links)"
+msgstr "Combinación de colores (enlaces de la barra de menús)"
+
+#: inc/customizer-assets/customizer.php:741
+msgid "Enable Search Form"
+msgstr "Habilitar Formulario de búsqueda"
+
+#: inc/customizer-assets/customizer.php:750
+msgid "Optional Topbar"
+msgstr "Barra superior opcional"
+
+#: inc/customizer-assets/customizer.php:763
+msgid "Enable Topbar"
+msgstr "Habilitar Barra Superior"
+
+#: inc/customizer-assets/customizer.php:764
+msgid "Requires Navbar position set to 'Standard static top'"
+msgstr ""
+"Requiere que la posición de la barra de navegación esté establecida en "
+"'Standard static top'"
+
+#: inc/customizer-assets/customizer.php:779
+msgid "Topbar Text / HTML"
+msgstr "Texto de la barra superior / HTML"
+
+#: inc/customizer-assets/customizer.php:794
+msgid "Topbar Background Color"
+msgstr "Color de fondo de la barra superior"
+
+#: inc/customizer-assets/customizer.php:820
+msgid "Topbar Text Color"
+msgstr "Color del texto de la barra superior"
+
+#: inc/customizer-assets/customizer.php:839
+msgid "Footer"
+msgstr "Pie de página"
+
+#: inc/customizer-assets/customizer.php:852
+msgid "Footer Text"
+msgstr "Texto de pie de página"
+
+#: inc/customizer-assets/customizer.php:862
+msgid "Single Post & Archives"
+msgstr "Publicación única y archivos"
+
+#: inc/customizer-assets/customizer.php:875
+msgid "Hide Categories"
+msgstr "Ocultar Categorías"
+
+#: inc/customizer-assets/customizer.php:909
+#, fuzzy
+#| msgid "Hide Post Date and Author"
+msgid "Hide Post Author"
+msgstr "Ocultar fecha de publicación y autor"
+
+#: inc/customizer-assets/customizer.php:925
+#, fuzzy
+#| msgid "Hide Post Date and Author"
+msgid "Hide Post Date"
+msgstr "Ocultar fecha de publicación y autor"
+
+#: inc/customizer-assets/customizer.php:941
+msgid "Enable Sharing Buttons after the Content"
+msgstr "Habilitar botones para compartir después del contenido"
+
+#: inc/customizer-assets/customizer.php:942
+msgid "Pure HTML only, SVG inline icons, zero bloat"
+msgstr "Solo HTML puro, iconos SVG en línea, sin código innecesario"
+
+#: inc/customizer-assets/customizer.php:984
+msgid "Header / Footer Code"
+msgstr "Código de encabezado / pie de página"
+
+#: inc/customizer-assets/customizer.php:997
+msgid "Add code to Header"
+msgstr "Agregar código al encabezado"
+
+#: inc/customizer-assets/customizer.php:1013
+msgid "Add code to Footer"
+msgstr "Agregar código al pie de página"
+
+#: inc/customizer-assets/customizer.php:1029
+msgid "body_font_object"
+msgstr ""
+
+#: inc/customizer-assets/customizer.php:1045
+msgid "headings_font_object"
+msgstr ""
+
+#: inc/customizer-assets/customizer.php:1062
+msgid "Font Loading Header code"
+msgstr "Cargando código de fuente del encabezado"
+
+#: inc/customizer-assets/customizer.php:1086
+msgid "Load Google Fonts anonymously"
+msgstr "Cargar fuentes de Google de forma anónima"
+
+#: inc/customizer-assets/customizer.php:1088
+msgid ""
+"Checking this option, Google fonts will be loaded from the privacy compliant "
+"<a target='_blank' href='https://fonts.coollabs.io/'>Coollabs Font "
+"repository</a>. "
+msgstr ""
+"Al marcar esta opción, las fuentes de Google se cargarán desde el <a "
+"target='_blank' href='https://fonts.coollabs.io/'>repositorio de fuentes "
+"Coollabs que</a> cumple con la privacidad. "
+
+#: inc/customizer-assets/customizer.php:1103
+msgid "Disable the Font Loading in Header"
+msgstr "Deshabilitar la carga de fuentes en el encabezado"
+
+#: inc/customizer-assets/customizer.php:1104
+msgid ""
+"Prevents the code of \n"
+"\t\t\tthe textarea above from being served in the site's &lt;head&gt;. "
+msgstr ""
+"Impide el código de \n"
+"\t\t\tEl área de texto anterior se sirve en el &lt;cabeza&gt; del sitio. "
+
+#: inc/customizer-assets/customizer.php:1114
+#, fuzzy
+#| msgid "Global Options & Utilities"
+msgid "Global Utilities"
+msgstr "Opciones globales y utilidades"
+
+#: inc/customizer-assets/customizer.php:1127
+msgid "Disable the Gutenberg Content Editor"
+msgstr "Desactivar el editor de contenido de Gutenberg"
+
+#: inc/customizer-assets/customizer.php:1128
+msgid ""
+"Disables the Gutenberg content editor on all post types. De-enqueues its CSS "
+"styles as well."
+msgstr ""
+"Desactiva el editor de contenido de Gutenberg en todos los tipos de "
+"publicaciones. También elimina la cola de sus estilos CSS."
+
+#: inc/customizer-assets/customizer.php:1143
+msgid "Disable the Block-based Widgets Editor"
+msgstr "Desactivar el editor de widgets basado en bloques"
+
+#: inc/customizer-assets/customizer.php:1144
+msgid ""
+"Disables the Block-based Widgets Editor and restores the classic widgets "
+"editor."
+msgstr ""
+"Desactiva el Editor de widgets basado en bloques y restaura el editor de "
+"widgets clásico."
+
+#: inc/customizer-assets/customizer.php:1159
+#, fuzzy
+#| msgid "Disable the WordPress comments system"
+msgid "Disable WordPress Comments"
+msgstr "Deshabilitar el sistema de comentarios de WordPress"
+
+#: inc/customizer-assets/customizer.php:1160
+msgid "Will completely disable the entire WP comments feature."
+msgstr "Deshabilitará completamente toda la función de comentarios de WP."
+
+#: inc/customizer-assets/customizer.php:1175
+msgid "Disable XML - RPC"
+msgstr "Deshabilitar XML - RPC"
+
+#: inc/customizer-assets/customizer.php:1176
+msgid ""
+"Disabling XML-RPC will close one more door that a potential hacker may try "
+"to exploit to hack your website."
+msgstr ""
+"Deshabilitar XML-RPC cerrará una puerta más que un hacker potencial puede "
+"intentar explotar para hackear su sitio web."
+
+#: inc/customizer-assets/customizer.php:1191
+#, fuzzy
+#| msgid "Disable  SCSS  LiveReload  "
+msgid "Disable  SCSS Autocompile / LiveReload "
+msgstr "Deshabilitar SCSS LiveReload  "
+
+#: inc/customizer-assets/customizer.php:1192
+#, fuzzy
+#| msgid ""
+#| "Will completely disable the entire livereload feature. If you're not "
+#| "editing the SCSS files, you can do so. Makes a difference for site admins "
+#| "only."
+msgid ""
+"If you're not editing the SCSS files, you can check this option. Makes a "
+"difference for site admins only."
+msgstr ""
+"Deshabilitará completamente la característica de ver los cambios en vivo. Si "
+"no está editando los archivos SCSS, puede hacerlo. Marca la diferencia solo "
+"para los administradores del sitio."
+
+#: inc/customizer-assets/customizer.php:1207
+msgid "Add a 'Back to Top' button to site"
+msgstr "Agregar un botón 'Volver arriba' al sitio"
+
+#: inc/customizer-assets/customizer.php:1208
+msgid ""
+"Very light implementation. To see the button, you will also need to Publish, "
+"exit the Customizer, and scroll down a long page"
+msgstr ""
+"Implementación en segundo plano. Para ver el botón, deberá también publicar, "
+"salir del Personalizador y desplazarse hacia abajo en una página larga"
+
+#: inc/customizer-assets/customizer.php:1223
+msgid "Enable Lightbox"
+msgstr "Habilitar Lightbox"
+
+#: inc/customizer-assets/customizer.php:1224
+#, fuzzy
+#| msgid ""
+#| "Will lazily add a JS and a CSS file from cdn.jsdelivr.net before closing "
+#| "the BODY of the page, to use   <a target='_blank' href='https://github."
+#| "com/biati-digital/glightbox'>gLightBox</a>: a very lightweight lightbox "
+#| "implementation. <br><br>The lightbox will be enabled on all images "
+#| "matching the selector: main#theme-main a:not(.nolightbox) img<br>To "
+#| "prevent the lightbox on an image, add the <b>nolightbox</b> class to it."
+msgid ""
+"Will lazily add a JS and a CSS file from cdn.jsdelivr.net before closing the "
+"BODY of the page, to use   <a target='_blank' href='https://github.com/biati-"
+"digital/glightbox'>gLightBox</a>: a very lightweight lightbox "
+"implementation. <br><br>The lightbox will be enabled on all images matching "
+"the selector: main#theme-main a:not(.nolightbox) img<br><br>This means that "
+"any image linked to something will open a lightbox.<br><br>To force the "
+"lightbox on an element, add the <b>glightbox</b> class to it.<br><br> To "
+"prevent the lightbox on a linked image, add the <b>nolightbox</b> class to "
+"it."
+msgstr ""
+"Agregará carga diferida de un archivo JS y un archivo CSS desde cdn.jsdelivr."
+"net antes de cerrar el CUERPO de la página, para usar   <a target='_blank' "
+"href='https://github.com/biati-digital/glightbox'>gLightBox</a>: una "
+"implementación de caja de luz muy liviana. <br><br>La caja de luz se "
+"habilitará en todas las imágenes que coincidan con el selector: main#theme-"
+"main a:not(.nolightbox) img<br>Para evitar la caja de luz en una imagen, "
+"agréguele la clase <b>nolightbox</b> ."
+
+#: inc/pagination.php:53
+msgid "&laquo;"
+msgstr "&laquo;"
+
+#: inc/pagination.php:54
+msgid "&raquo;"
+msgstr "&raquo;"
+
+#: inc/pagination.php:57
+msgid "Posts navigation"
+msgstr "Navegación de Entradas"
+
+#: inc/setup.php:49
+msgid "Primary Menu"
+msgstr "Menú principal"
+
+#: inc/setup.php:50
+msgid "Secondary Menu"
+msgstr "Menú Secundario"
+
+#: inc/setup.php:158
+msgid "Read More..."
+msgstr "Leer más..."
+
+#: inc/template-tags.php:12
+msgid "You can edit this footer text using the WordPress Customizer."
+msgstr ""
+"Puede editar este texto de pie de página utilizando el personalizador de "
+"WordPress."
+
+#: inc/template-tags.php:29
+msgid "Share this post"
+msgstr "Compartir"
+
+#: inc/widgets.php:147
+msgid "Main Sidebar"
+msgstr "Barra lateral principal"
+
+#: inc/widgets.php:149
+msgid "Main sidebar widget area"
+msgstr "Área de widgets de la barra lateral principal"
+
+#: inc/widgets.php:160
+msgid "Footer Full"
+msgstr "Pie de página completo"
+
+#: inc/widgets.php:162
+msgid "Full sized footer widget with dynamic grid"
+msgstr "Widget de pie de página de tamaño completo con cuadrícula dinámica"
+
+#: inc/widgets.php:173
+msgid "WooCommerce Shop Sidebar"
+msgstr "Barra lateral de tienda WooCommerce"
+
+#: inc/widgets.php:175
+msgid "Shop sidebar widget area"
+msgstr "Área de widgets de la barra lateral de la tienda"
+
+#. Template Name of the theme
+msgid "Blank NoFooter Page Template"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Blank Page Template"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Bootstrap Demo Template"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Default Without Jumbotron"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Empty Page Template"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Page with Sidebar on the Left"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Page with Sidebar on the Right"
+msgstr ""
+
+#. translators: %s: query term
+#: search.php:16
+msgid "Search Results for: %s"
+msgstr "Resultados de búsqueda para: %s"
+
+#: single.php:29
+msgid "Categories"
+msgstr "Categorías"
+
+#: single.php:50
+msgid "by"
+msgstr "por"
+
+#: single.php:66
+msgid "Edit this post"
+msgstr "Editar esta publicación"
+
+#: single.php:82
+msgid "Sorry, no posts matched your criteria."
+msgstr "Lo sentimos, ninguna entrada coincide con tus criterios."
+
+#~ msgid "<b>Keep this unchecked, unless you really want. </b>"
+#~ msgstr "<b>Mantén esto desactivado, a menos que realmente quieras. </b>"
+
+#~ msgid ""
+#~ "Disables serving the code in the textarea above to the site header. Can "
+#~ "be relevant if you want to self-host Google Fonts. Refer to this <a "
+#~ "target='_blank' href='https://google-webfonts-helper.herokuapp.com/fonts/"
+#~ "abeezee?subsets=latin'>tool</a> to get started. "
+#~ msgstr ""
+#~ "Deshabilita la entrega del código del área de texto anterior al "
+#~ "encabezado del sitio. Puede ser relevante si desea alojar localmente "
+#~ "fuentes de Google. Consulte esta <a target='_blank' href='https://google-"
+#~ "webfonts-helper.herokuapp.com/fonts/abeezee?subsets=latin'>herramienta</"
+#~ "a> para comenzar. "
+
+#~ msgid "Export Settings"
+#~ msgstr "Ajustes de exportación"
+
+#~ msgid ""
+#~ "Export the theme settings for this site as a .json file. This allows you "
+#~ "to easily import the configuration into another site."
+#~ msgstr ""
+#~ "Exporte la configuración del tema de este sitio como un archivo .json. "
+#~ "Esto le permite importar fácilmente la configuración a otro sitio."
+
+#~ msgid "Export"
+#~ msgstr "Exportar"
+
+#~ msgid "Import Settings"
+#~ msgstr "Importar ajustes"
+
+#~ msgid ""
+#~ "Import the plugin settings from a .json file. This file can be obtained "
+#~ "by exporting the settings on another site using the form above."
+#~ msgstr ""
+#~ "Importar la configuración del plugin desde un archivo .json. Este archivo "
+#~ "se puede obtener mediante la exportación de los ajustes en otro sitio "
+#~ "usando el formulario de arriba."
+
+#~ msgid "Import"
+#~ msgstr "Importar"
+
+#~ msgid "Please upload a valid .json file"
+#~ msgstr "Por favor sube un archivo .json válido"
+
+#~ msgid "Please upload a file to import"
+#~ msgstr "Por favor sube un archivo para importar"
+
+#~ msgid "Twitter Username"
+#~ msgstr "Nombre de usuario de Twitter"
+
+#~ msgid "Return to shop"
+#~ msgstr "Volver a la tienda"
+
+#~ msgid "Product"
+#~ msgstr "Producto"
+
+#~ msgid "Price"
+#~ msgstr "Precio"
+
+#~ msgid "Quantity"
+#~ msgstr "Cantidad"
+
+#~ msgid "Subtotal"
+#~ msgstr "Subtotal"
+
+#~ msgid "Remove this item"
+#~ msgstr "Eliminar este artículo"
+
+#~ msgid "Available on backorder"
+#~ msgstr "Disponible por pedido pendiente"
+
+#~ msgid "Coupon:"
+#~ msgstr "Cupón:"
+
+#~ msgid "Coupon code"
+#~ msgstr "Código de cupón"
+
+#~ msgid "Apply coupon"
+#~ msgstr "Aplicar cupón"
+
+#~ msgid "Update cart"
+#~ msgstr "Actualizar carrito"
+
+#~ msgid "Proceed to checkout"
+#~ msgstr "Finalizar pedido"
+
+#~ msgid "You must be logged in to checkout."
+#~ msgstr "Debes iniciar sesión para realizar el pago."
+
+#~ msgid "Your order"
+#~ msgstr "Tu pedido"
+
+#~ msgid "Have a coupon?"
+#~ msgstr "¿Tienes un cupón?"
+
+#~ msgid "Click here to enter your code"
+#~ msgstr "Haga clic aquí para ingresar su código"
+
+#~ msgid "If you have a coupon code, please apply it below."
+#~ msgstr "Si tienes un código de cupón, por favor, introdúcelo abajo."
+
+#~ msgid "Qty"
+#~ msgstr "Cantidad"
+
+#~ msgid "Totals"
+#~ msgstr "Totales"
+
+#~ msgid ""
+#~ "Sorry, it seems that there are no available payment methods for your "
+#~ "location. Please contact us if you require assistance or wish to make "
+#~ "alternate arrangements."
+#~ msgstr ""
+#~ "Lo sentimos, parece que no hay métodos de pago disponibles para tu "
+#~ "ubicación. Por favor, ponte en contacto con nosotros si necesitas ayuda."
+
+#~ msgid ""
+#~ "Sorry, it seems that there are no available payment methods for your "
+#~ "state. Please contact us if you require assistance or wish to make "
+#~ "alternate arrangements."
+#~ msgstr ""
+#~ "Lo sentimos, parece que no hay métodos de pago disponibles para su "
+#~ "ubicación. Póngase en contacto con nosotros si necesita ayuda."
+
+#~ msgid "Please fill in your details above to see available payment methods."
+#~ msgstr ""
+#~ "Por favor, introduce tus datos arriba para ver los métodos de pago "
+#~ "disponibles."
+
+#, php-format
+#~ msgid ""
+#~ "Since your browser does not support JavaScript, or it is disabled, please "
+#~ "ensure you click the %1$sUpdate Totals%2$s button before placing your "
+#~ "order. You may be charged more than the amount stated above if you fail "
+#~ "to do so."
+#~ msgstr ""
+#~ "Debido a que tu navegador no soporta JavaScript, o lo tiene "
+#~ "deshabilitado, asegúrate por favor de hacer clic en el botón "
+#~ "%1$sActualizar totales%2$s antes de realizar el pedido. De no hacerlo, se "
+#~ "te podría cobrar más de la cantidad indicada arriba."
+
+#~ msgid "Update totals"
+#~ msgstr "Actualizar totales"
+
+#~ msgid "Username or email"
+#~ msgstr "Nombre de usuario o correo electrónico"
+
+#~ msgid "Password"
+#~ msgstr "Contraseña"
+
+#~ msgid "Remember me"
+#~ msgstr "Recuérdame"
+
+#~ msgid "Login"
+#~ msgstr "Iniciar sesión"
+
+#~ msgid "Lost your password?"
+#~ msgstr "¿Perdiste tu contraseña?"
+
+#~ msgid "Shop order"
+#~ msgstr "Pedido"
+
+#~ msgid "Go shop"
+#~ msgstr "Ir a tienda"
+
+#~ msgid "No downloads available yet."
+#~ msgstr "Todavía no hay descargas disponibles."
+
+#~ msgid "First name"
+#~ msgstr "Nombre"
+
+#~ msgid "Last name"
+#~ msgstr "Apellido"
+
+#~ msgid "Display name"
+#~ msgstr "Nombre para mostrar"
+
+#~ msgid ""
+#~ "This will be how your name will be displayed in the account section and "
+#~ "in reviews"
+#~ msgstr ""
+#~ "Así se mostrará tu nombre en la sección de tu cuenta y en las reseñas"
+
+#~ msgid "Email address"
+#~ msgstr "Dirección de correo electrónico"
+
+#~ msgid "Password change"
+#~ msgstr "Cambiar contraseña"
+
+#~ msgid "Current password (leave blank to leave unchanged)"
+#~ msgstr "Contraseña actual (dejar en blanco para no cambiar la contraseña)"
+
+#~ msgid "New password (leave blank to leave unchanged)"
+#~ msgstr "Nueva contraseña (dejar en blanco para dejar sin cambios)"
+
+#~ msgid "Confirm new password"
+#~ msgstr "Confirmar nueva contraseña"
+
+#~ msgid "Save changes"
+#~ msgstr "Guardar cambios"
+
+#~ msgid "Billing address"
+#~ msgstr "Dirección de facturación"
+
+#~ msgid "Shipping address"
+#~ msgstr "Dirección de envío"
+
+#~ msgid "Save address"
+#~ msgstr "Guardar dirección"
+
+#~ msgid "Username or email address"
+#~ msgstr "Nombre de usuario o correo electrónico"
+
+#~ msgid "Log in"
+#~ msgstr "Iniciar sesión"
+
+#~ msgid "Register"
+#~ msgstr "Registrarse"
+
+#~ msgid "Username"
+#~ msgstr "Nombre de usuario"
+
+#~ msgid "A password will be sent to your email address."
+#~ msgstr "Se enviará una contraseña a tu dirección de correo electrónico."
+
+#~ msgid ""
+#~ "Lost your password? Please enter your username or email address. You will "
+#~ "receive a link to create a new password via email."
+#~ msgstr ""
+#~ "¿Perdiste tu contraseña? Por favor, introduce tu nombre de usuario o "
+#~ "correo electrónico. Recibirás un enlace para crear una contraseña nueva "
+#~ "por correo electrónico."
+
+#~ msgid "Reset password"
+#~ msgstr "Restablecer contraseña"
+
+#~ msgid "Enter a new password below."
+#~ msgstr "Ingresa debajo una contraseña nueva."
+
+#~ msgid "New password"
+#~ msgstr "Nueva contraseña"
+
+#~ msgid "Re-enter new password"
+#~ msgstr "Repite la nueva contraseña"
+
+#~ msgid "Save"
+#~ msgstr "Guardar"
+
+#~ msgid ""
+#~ "The following addresses will be used on the checkout page by default."
+#~ msgstr ""
+#~ "Las siguientes direcciones se utilizarán en la página de pago de forma "
+#~ "predeterminada."
+
+#~ msgid "Edit"
+#~ msgstr "Editar"
+
+#~ msgid "You have not set up this type of address yet."
+#~ msgstr "Todavía no ha configurado este tipo de dirección."
+
+#~ msgid "Order"
+#~ msgstr "Pedido"
+
+#~ msgid "Date"
+#~ msgstr "﻿Fecha"
+
+#~ msgid "Status"
+#~ msgstr "Estado"
+
+#~ msgid "Total"
+#~ msgstr "Total"
+
+#~ msgid "Recent orders"
+#~ msgstr "Pedidos recientes"
+
+#~ msgctxt "hash before order number"
+#~ msgid "#"
+#~ msgstr "#"
+
+#, php-format
+#~ msgid "%1$s for %2$s item"
+#~ msgid_plural "%1$s for %2$s items"
+#~ msgstr[0] "%1$s para %2$s"
+#~ msgstr[1] "%1$s para %2$s elementos"
+
+#~ msgid "Previous"
+#~ msgstr "Anterior"
+
+#~ msgid "Next"
+#~ msgstr "Siguiente"
+
+#~ msgid "Go to the shop"
+#~ msgstr "Ir a la tienda"
+
+#~ msgid "No order has been made yet."
+#~ msgstr "No se ha hecho ningún pedido todavía."
+
+#~ msgid "Search products&hellip;"
+#~ msgstr "Buscar productos&hellip;"
+
+#~ msgid "Search for:"
+#~ msgstr "Buscar:"
+
+#~ msgctxt "submit button"
+#~ msgid "Search"
+#~ msgstr "Buscar"
+
+#~ msgid "The fastest Bootstrap 5 WordPress starter theme"
+#~ msgstr "El Starter theme más rápido de Bootstrap 5 para WordPress"

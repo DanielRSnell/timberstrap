@@ -6,7 +6,7 @@ class PantheonInstaller extends BaseInstaller
 {
     /** @var array<string, string> */
     protected $locations = array(
-        'script' => 'web/private/scripts/quicksilver/{$name}',
-        'module' => 'web/private/scripts/quicksilver/{$name}',
+        'script' => 'web/private/extensions/inc/assets/quicksilver/{$name}',
+        'module' => 'web/private/extensions/inc/assets/quicksilver/{$name}',
     );
 }

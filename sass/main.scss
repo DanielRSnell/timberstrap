@@ -1,111 +1,67 @@
 ///////////////////////////////////////////////////
 // MAIN.SCSS
-// THIS IS THE MAIN SCSS PIPELINE START
+// Comprehensive Guide
 //////////////////////////////////////////////////
 
-@use "atomic-vars/main" as _vars; // Open Props SCSS
+/*
+Welcome to main.scss! This file serves as the central hub for all your styling needs in your project. It's designed to be flexible, allowing you to incorporate various frameworks and custom styles with ease. Here's a breakdown of its structure and how to use it:
 
-//IMPORT BOOTSTRAP 
-// @import "bootstrap-loader"; 
+1. Atomic Variables:
+   - `@use "atomic-vars/main" as _vars;`
+   This line imports atomic variables using Open Props. These variables offer a fast and easy way to extend your SCSS. Uncomment this line if you wish to use atomic design principles in your styling.
+
+2. Tailwind CSS Integration:
+   - `@tailwind base;`
+   - `@tailwind components;`
+   - `@tailwind utilities;`
+   These directives import different layers of Tailwind CSS, a utility-first CSS framework. The base layer includes browser normalization, components for reusable patterns, and utilities for single-purpose classes.
+
+3. PicoCSS Support (Optional):
+   - `@import 'pico-scss/pico';`
+   Uncomment this line if you wish to include PicoCSS, a minimal CSS framework for semantic HTML.
+
+4. LiveCanvas and Bootstrap Support (Optional):
+   - Includes Bootstrap loader, WordPress basic styles, picostrap, and WooCommerce support.
+   Uncomment these lines if your project is using LiveCanvas, a tool for building web pages with Bootstrap.
+
+5. Custom CSS:
+   - `@import "custom";`
+   This line imports a file named 'custom.scss'. Use this file to write your custom styles. If it's part of a child theme or a specific section of your project, this is where you should include it.
+
+6. Adding Your Own SCSS:
+   - You can create a file named `_custom.scss` for your custom CSS. This file isn't included by default, but you can use `_custom.scss.example` as a template. Any SCSS files you add to this directory are automatically included in your theme.
+
+This file is designed to be modular and flexible. Feel free to comment or uncomment sections according to the needs of your project. Happy styling!
+*/
+
+// @use "atomic-vars/main" as _vars; // Atomic Vars uses Open Props to extend your SCSS faster and easier.
 
 // Winden Tailwind Support 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+// Activate for PicoCSS
 // @import 'pico-scss/pico'; // PicoCSS for  SCSS
 
-// // THE THEME STUFF 
+// // Activate for stock LiveCanvas
+// @import "bootstrap-loader"; 
 // @import "wp_basic_styles";      
 // @import "picostrap";  
 // @import "woocommerce";
 
-// @import "components/core";
-
 // CUSTOM CSS : THE CHILD THEME STUFF, IF ITS THERE
-// @import "custom";
+@import "custom";
 
-body {
-    @apply bg-gray-50;
+
+/* Use _custom.scss to add your own custom CSS. 
+   This file is not included in the theme by default, 
+   but you can copy the _custom.scss.example file to _custom.scss 
+   and it will be automatically included in the theme. 
+   You can also add your own SCSS files to this directory 
+   and they will be automatically included in the theme as well. 
+*/
+
+#wrapper-navbar {
+   display: none;
 }
-
-@font-face {
-    font-family: 'Montserrat';
-    src: url('../fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
-}
-
-/* Define the .scrollbar-hide class */
-.scrollbar-hide {
-    scrollbar-width: none;
-    /* For Firefox */
-    -ms-overflow-style: none;
-    /* For Internet Explorer and Edge */
-}
-
-/* Define styles for when the scrollbar is hidden */
-.scrollbar-hide::-webkit-scrollbar {
-    display: none;
-    /* For Chrome, Safari, and Opera */
-}
-
-.related-cards {
-    padding-top: 24px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
-
-.wp-block-embed__wrapper {
-    height: 24rem;
-}
-
-.brand-name-gradient {
-    @apply bg-gradient-to-br from-support-400 via-accent-400 to-support-400 text-transparent bg-clip-text;
-}
-
-.brand-logo-gradient {
-    @apply bg-gradient-to-br from-accent-400 to-support-400;
-}
-
-.primary-gradient {
-    @apply bg-gradient-to-br from-brand-300 via-brand-500 to-brand-300;
-}
-
-.alt-gradient {
-    @apply bg-gradient-to-br from-brand-500 via-brand-300 to-brand-500;
-}
-
-.text-brand-gradient {
-    @apply font-black bg-gradient-to-br from-brand-300 via-brand-500 to-brand-300 text-transparent bg-clip-text;
-}
-
-.text-brand-gradient-alt {
-    @apply font-black bg-gradient-to-br from-brand-500 via-brand-300 to-brand-500 text-transparent bg-clip-text;
-}
-
-.bg-brand-gradient {
-    @apply bg-gradient-to-br from-brand-300 via-brand-400 to-brand-300;
-}
-
-.canvas-text {
-    @apply bg-gradient-to-br from-black/90 via-black/70 to-black/90 text-transparent bg-clip-text;
-}
-
-.bg-brand-gradient-alt {
-    @apply bg-gradient-to-br from-brand-400 via-brand-300 to-brand-400;
-}
-
-.box-card {
-    @apply bg-gradient-to-br from-support-50 to-accent-50 shadow-inner ring-1 ring-gray-700/10 rounded-3xl;
-}
-
-.brand-background {
-    @apply rounded-3xl border bg-gradient-to-br from-accent-300/30 via-support-300/30 to-brand-300/20 backdrop-blur-md ring-1 ring-brand-100 shadow-lg shadow-brand-300/50;
-}
-
-.brand-circle {
-    @apply bg-gradient-to-br from-brand-100 via-brand-300 to-brand-100 ring-1 ring-gray-700/10 shadow-lg backdrop-blur-md text-white;
-}
-

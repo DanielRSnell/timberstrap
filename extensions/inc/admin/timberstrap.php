@@ -40,32 +40,14 @@ function add_theme_options_page() {
 }
 add_action('admin_menu', 'add_theme_options_page');
 
-function timberstrap_options_page() {
-    ?>
-<div class="wrap">
-    <h1>Timberstrap Options</h1>
-    <form method="post" action="options.php">
-        <?php
-            settings_fields('timberstrap_options_group');
-            do_settings_sections('timberstrap-options');
-            submit_button();
-            ?>
-    </form>
-</div>
-<?php
-}
-
-
 function register_timberstrap_settings() {
-    // Register a new setting for "Timberstrap" page
-    // register_setting('timberstrap_options_group', 'unocss');
+       // Register settings
     register_setting('timberstrap_options_group', 'markup_parsing');
-    // Register a new setting for Alpine Integration
     register_setting('timberstrap_options_group', 'alpine_integration');
     register_setting('timberstrap_options_group', 'tailwind_integration');
+    register_setting('timberstrap_options_group', 'vite_development_mode'); // Register 'Vite Development Mode' setting
 
-
-    // Register a new section in the "Timberstrap" page
+    // Add settings section
     add_settings_section(
         'timberstrap_settings_section',
         'General Settings',
@@ -73,14 +55,7 @@ function register_timberstrap_settings() {
         'timberstrap-options'
     );
 
-     add_settings_field(
-        'tailwind_integration_field',
-        'tailwind Integration',
-        'tailwind_integration_field_callback',
-        'timberstrap-options',
-        'timberstrap_settings_section'
-    );
-
+    // Add fields to the settings section
     add_settings_field(
         'markup_parsing_field',
         'Markup Parsing',
@@ -89,11 +64,27 @@ function register_timberstrap_settings() {
         'timberstrap_settings_section'
     );
 
-    // Register new field for Alpine Integration
     add_settings_field(
         'alpine_integration_field',
         'Alpine Integration',
         'alpine_integration_field_callback',
+        'timberstrap-options',
+        'timberstrap_settings_section'
+    );
+
+    add_settings_field(
+        'tailwind_integration_field',
+        'Tailwind Integration',
+        'tailwind_integration_field_callback',
+        'timberstrap-options',
+        'timberstrap_settings_section'
+    );
+
+    // Add 'Vite Development Mode' field
+    add_settings_field(
+        'vite_development_mode_field',
+        'Vite Development Mode',
+        'vite_development_mode_field_callback',
         'timberstrap-options',
         'timberstrap_settings_section'
     );
@@ -119,3 +110,45 @@ function tailwind_integration_field_callback() {
     $tailwind_integration = get_option('tailwind_integration');
     echo '<input type="checkbox" id="tailwind_integration" name="tailwind_integration" value="1"' . checked(1, $tailwind_integration, false) . '/>';
 }
+
+function vite_development_mode_field_callback() {
+    $vite_development_mode = get_option('vite_development_mode');
+    echo '<input type="checkbox" id="vite_development_mode" name="vite_development_mode" value="1"' . checked(1, $vite_development_mode, false) . '/>';
+}
+
+function timberstrap_options_page() {
+    $context = Timber::context();
+    $context['alpine'] =  get_stylesheet_directory_uri() . '/js/alpine.js';
+
+    // Start output buffering
+    ob_start();
+    // Output settings sections and fields
+    do_settings_sections('timberstrap-options');
+    $context['settings_sections'] = ob_get_clean();
+
+    ob_start();
+    settings_fields('timberstrap_options_group');
+    $context['settings_fields'] = ob_get_clean();
+
+    $context['state'] = $context;
+
+    Timber::render('@admin/admin-settings.twig', $context);
+}
+
+function timberstrap_enqueue_admin_scripts($hook) {
+    // Check if we are on the timberstrap-settings page
+    if (isset($_GET['page']) && $_GET['page'] === 'timberstrap-settings') {
+        // Enqueue Alpine.js from your child theme's directory
+        wp_enqueue_script('alpine-js', get_stylesheet_directory_uri() . '/js/alpine.js', array(), null, true);
+
+        // Development Mode Enqueue UnoCSS runtime
+        // wp_enqueue_script('unocss-runtime', 'https://cdn.jsdelivr.net/npm/@unocss/runtime', array(), null, true);
+
+        // Development Mode Enqueue Tailwind reset CSS
+        // wp_enqueue_style('tailwind-reset', 'https://cdn.jsdelivr.net/npm/@unocss/reset/tailwind.min.css', array(), null, 'all');
+
+        wp_enqueue_style('timberstrap-styles', get_stylesheet_directory_uri() . '/extensions/inc/admin/styles/main.css', array(), null, 'all');
+    }
+}
+
+add_action('admin_enqueue_scripts', 'timberstrap_enqueue_admin_scripts');

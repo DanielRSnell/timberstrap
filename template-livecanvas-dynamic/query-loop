@@ -1,0 +1,13 @@
+[twig]
+{% set args = {
+    'post_type': 'post',  
+    'posts_per_page': 10  
+} %}
+
+{% set posts = Post(args) %}
+
+{% for post in posts %}
+    <h2 class="text-dark">{{ post.post_title }}</h2>
+    <p class="text-dark">{{ post.post_content | raw }}</p>  {# Use 'raw' filter to render HTML #}
+{% endfor %}
+[/twig]

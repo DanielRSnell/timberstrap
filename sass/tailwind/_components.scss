@@ -1,0 +1,56 @@
+// tailwind/_components.scss
+// Comprehensive Guide
+
+/*
+This file is a crucial part of your Tailwind CSS setup, specifically tailored for defining custom component styles. Here's a guide on how to effectively utilize the `tailwind/_components.scss` file:
+
+1. Purpose of `@layer components`:
+   - The `@layer components` directive in Tailwind CSS is designed for declaring CSS styles that belong to specific UI components.
+   - This layer is processed after the base layer but before the utilities layer, ensuring that these styles have higher specificity than base styles but can still be overridden by utility classes.
+
+2. How to Use:
+   - Inside the `@layer components { ... }` block, you write styles for various components like buttons, cards, modals, etc.
+   - These styles typically encapsulate a complete design for a reusable component.
+
+3. Example Usage:
+   - Styling a button component:
+     ```
+     @layer components {
+       .btn-primary {
+         background-color: #3490dc;
+         color: white;
+         padding: 0.5rem 1rem;
+         border-radius: 0.25rem;
+         &:hover {
+           background-color: #2779bd;
+         }
+       }
+     }
+     ```
+   - Creating a card component:
+     ```
+     @layer components {
+       .card {
+         background: white;
+         border-radius: 0.5rem;
+         padding: 1rem;
+         box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+       }
+       .card-header {
+         font-size: 1.25rem;
+         font-weight: bold;
+       }
+     }
+     ```
+
+4. Best Practices:
+   - Use this file to define styles that are specific to components rather than global styles.
+   - Keep your component styles modular and reusable.
+   - Avoid writing utility classes here; use the utilities layer for that purpose.
+
+By organizing your component-specific styles in the `tailwind/_components.scss`, you enhance the modularity and reusability of your UI components, leading to a more maintainable and scalable project structure.
+*/
+
+@layer components {
+
+}
