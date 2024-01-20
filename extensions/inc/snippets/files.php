@@ -36,12 +36,11 @@ function get_template_contents() {
                     if (in_array($fileExtension, $allowed_extensions) || empty($fileExtension)) {
                         $fileContent = file_get_contents($filePath);
 
-                        // Sanitize the HTML content
-                        $sanitizedContent = wp_kses_post($fileContent);
+                        
 
                         $results[] = [
                             'name' => 'file/' . $key . '/' . pathinfo($file, PATHINFO_FILENAME),
-                            'content' => $sanitizedContent,
+                            'content' => $fileContent,
                         ];
                     }
                 }

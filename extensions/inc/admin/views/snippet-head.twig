@@ -17,14 +17,14 @@
 
 {% for post in snippets %}
 
-{% set type = typeMapping[post.post_type] ?? 'snippet' %}
+	{% set type = typeMapping[post.post_type] ?? 'snippet' %}
 
-    {% set snippet_object = {
+	{% set snippet_object = {
         'name': type ~ '/' ~ post.slug,
         'score': 1000,
         'content': function('html_entity_decode', post.post_content) | raw,
     } %}
-    {% set integrations_test = integrations_test|merge([snippet_object]) %}
+	{% set integrations_test = integrations_test|merge([snippet_object]) %}
 {% endfor %}
 
 {% set shortcode_completions = [
@@ -66,49 +66,45 @@
 ] %}
 
 {% for shortcode in shortcode_completions %}
-    {% set integrations_test = integrations_test|merge([shortcode]) %}
+	{% set integrations_test = integrations_test|merge([shortcode]) %}
 {% endfor %}
 
 {% for file in files %}
 
-{% set snippet_object = {
+	{% set snippet_object = {
     'name': file.name,
     'score': 1000,
-    'content': function('html_entity_decode', file.content) | raw,
+    'content':  function('html_entity_decode', file.content) | raw,
+
 } %}
-{% set integrations_test = integrations_test|merge([snippet_object]) %}
+	{% set integrations_test = integrations_test|merge([snippet_object]) %}
 
 
 {% endfor %}
 
 
 <script defer>
-    {# var beautify = ace.require("ace/ext/beautify"); // get reference to extension #}
 
-    const snippet_editor = ace.edit("lc-html-editor");
-    snippet_editor.setOptions({
-        enableSnippets: true,
-        mode: "ace/mode/twig" 
-    });
 
-    {# // Activate the beautify extension #}
-    {# beautify.beautify(snippet_editor.session); #}
+	const snippet_editor = ace.edit("lc-html-editor");
+snippet_editor.setOptions({enableSnippets: true, mode: "ace/mode/twig"});
 
-    console.log('Snippet Editor: ', snippet_editor);
-    var SnippetManager = ace.require("ace/snippets").snippetManager;
-    var integrations_test = {{ integrations_test|json_encode|raw }};
-    console.log("Snippets Registered: ", integrations_test);
 
-    SnippetManager.register(integrations_test, "twig");
+console.log('Snippet Editor: ', snippet_editor);
+var SnippetManager = ace.require("ace/snippets").snippetManager;
+var integrations_test = {{ integrations_test|json_encode|raw }};
+console.log("Snippets Registered: ", integrations_test);
 
-   
-    snippet_editor.session.on('changeMode', function() {
-        if (snippet_editor.session.getMode().$id !== "ace/mode/twig") {
-            snippet_editor.session.setMode("ace/mode/twig"); 
-            console.log("Mode was changed. Resetting to twig.");
-        }
+SnippetManager.register(integrations_test, "twig");
 
-       
-        console.log("Current Editor Config: ", snippet_editor.getOptions({}));
-    });
+
+snippet_editor.session.on('changeMode', function () {
+if (snippet_editor.session.getMode().$id !== "ace/mode/twig") {
+snippet_editor.session.setMode("ace/mode/twig");
+console.log("Mode was changed. Resetting to twig.");
+}
+
+
+console.log("Current Editor Config: ", snippet_editor.getOptions({}));
+});
 </script>

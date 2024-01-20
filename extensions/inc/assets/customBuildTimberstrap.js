@@ -34,7 +34,7 @@ function customBuildTimberstrap() {
       console.log('Starting build...');
       recompileSass();
       execSync('node ./extensions/inc/assets/createBundle.mjs');
-      execSync('npx tailwindcss -i ./css-output/bundle.css -o ./css-output/tailwind.css --minify');
+      execSync('npm run build:tailwind');
       console.log('Build completed.');
     },
     handleHotUpdate({ server }) {
