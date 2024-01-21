@@ -84,10 +84,7 @@ function check_env_for_wordpress() {
         add_action('admin_notices', function() {
             echo '<div class="notice notice-warning is-dismissible"><p>VITE_WP_LOCAL_URL is not set in your .env file within the child theme directory.</p></div>';
         });
-    } else {
-        add_action('admin_notices', function() {
-            echo '<div class="notice notice-success is-dismissible"><p>Timberstrap is now active with the current settings.</p></div>';
-        });
+    } 
     }
 }
 
@@ -95,4 +92,3 @@ add_action('admin_init', 'check_env_for_wordpress');
 
 // Enable Endpoints
 require get_stylesheet_directory() . '/extensions/inc/assets/endpoints_filter.php';
-}

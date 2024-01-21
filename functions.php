@@ -93,3 +93,5 @@ add_filter("lc_editor_header", function () { ?>
     src="<?php echo get_stylesheet_directory_uri(); ?>/js/wayfinder/index.js"></script>
 
 <?php });
+
+
