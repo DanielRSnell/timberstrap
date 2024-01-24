@@ -1,3 +1,14 @@
 node_modules
 css-output/autocomplete.css 
 css-output/autocomplete.css.map
+template-livecanvas-blocks/all-logos.twig
+template-livecanvas-blocks/profile.twig
+template-livecanvas-blocks/projects/
+template-livecanvas-blocks/quote.twig
+template-livecanvas-blocks/resume.twig
+template-livecanvas-blocks/service.twig
+template-livecanvas-blocks/skill.twig
+template-livecanvas-blocks/social.twig
+template-livecanvas-blocks/subscribe.twig
+template-livecanvas-blocks/testimonial.twig
+template-livecanvas-sections/profile-grid.twig

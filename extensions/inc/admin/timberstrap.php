@@ -46,7 +46,7 @@ function register_timberstrap_settings() {
     register_setting('timberstrap_options_group', 'alpine_integration');
     register_setting('timberstrap_options_group', 'tailwind_integration');
     register_setting('timberstrap_options_group', 'vite_development_mode'); // Register 'Vite Development Mode' setting
-
+    register_setting('timberstrap_options_group', 'block_mode');
     // Add settings section
     add_settings_section(
         'timberstrap_settings_section',
@@ -88,6 +88,15 @@ function register_timberstrap_settings() {
         'timberstrap-options',
         'timberstrap_settings_section'
     );
+
+    // Add 'Block Mode' field
+    add_settings_field(
+        'block_mode_field',
+        'Block Mode',
+        'block_mode_field_callback',
+        'timberstrap-options',
+        'timberstrap_settings_section'
+    );
 }
 add_action('admin_init', 'register_timberstrap_settings');
 
@@ -114,6 +123,11 @@ function tailwind_integration_field_callback() {
 function vite_development_mode_field_callback() {
     $vite_development_mode = get_option('vite_development_mode');
     echo '<input type="checkbox" id="vite_development_mode" name="vite_development_mode" value="1"' . checked(1, $vite_development_mode, false) . '/>';
+}
+
+function block_mode_field_callback() {
+    $block_mode = get_option('block_mode');
+    echo '<input type="checkbox" id="block_mode" name="block_mode" value="1"' . checked(1, $block_mode, false) . '/>';
 }
 
 function timberstrap_options_page() {

@@ -40,11 +40,11 @@ module.exports = {
     './extensions/inc/assets/index.html',
     './css-output/bundle.css',
     // Paths for template-livecanvas-*
-    // './template-livecanvas-blocks/**/*.{php,twig,html,css}',
-    // './template-livecanvas-sections/**/*.{php,twig,html,css}',
-    // './template-livecanvas-partials/**/*.{php,twig,html,css}',
-    // './template-livecanvas-dynamic-templates/**/*.{php,twig,html,css}',
-    // './template-livecanvas-snippets/**/*.{php,twig,html,css}',
+    './template-livecanvas-blocks/**/*.{php,twig,html,css}',
+    './template-livecanvas-sections/**/*.{php,twig,html,css}',
+    './template-livecanvas-partials/**/*.{php,twig,html,css}',
+    './template-livecanvas-dynamic-templates/**/*.{php,twig,html,css}',
+    './template-livecanvas-snippets/**/*.{php,twig,html,css}',
   ],
   safelist: process.env.GENERATE_AUTOCOMPLETE
       ? [{ pattern: /./ }]

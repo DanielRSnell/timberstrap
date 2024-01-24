@@ -32,6 +32,7 @@ $markup_parsing_enabled = get_option('markup_parsing');
 $alpine_integration_enabled = get_option('alpine_integration');
 $tailwind_integration_enabled = get_option('tailwind_integration');
 $development_mode_enabled = get_option('vite_development_mode');
+$block_mode_enabled = get_option('block_mode');
 
 
 if ($tailwind_integration_enabled) {
@@ -92,3 +93,34 @@ add_action('admin_init', 'check_env_for_wordpress');
 
 // Enable Endpoints
 require get_stylesheet_directory() . '/extensions/inc/assets/endpoints_filter.php';
+
+if ($block_mode_enabled) {
+    add_action( 'tgmpa_register', 'prefix_register_required_plugins' );
+
+function prefix_register_required_plugins() {
+    $plugins = [
+        // Require ACF Pro
+        [
+            'name'        => 'Advanced Custom Fields Pro',
+            'slug'        => 'advanced-custom-fields-pro', // Ensure this slug is correct
+            'required'    => true, // This makes it required
+            'source'      => 'path-to-your/acf-pro.zip', // Provide the path to your downloaded ACF Pro plugin
+            'external_url' => 'https://www.advancedcustomfields.com/',
+        ],
+        // Recommend ACF Extended
+        [
+            'name'        => 'ACF Extended',
+            'slug'        => 'acf-extended', // This is the WordPress.org slug for ACF Extended
+            'required'    => false, // This makes it recommended, not required
+            'external_url' => 'https://www.acf-extended.com/',
+        ],
+    ];
+
+    $config = [
+        'id' => 'timberstrap',
+    ];
+
+    tgmpa( $plugins, $config );
+}
+require $BASE_DIR . '/fse/controller.php';
+}
